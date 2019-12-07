@@ -1,0 +1,20 @@
+Nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+#Nav_logo {
+    text-align: left;
+    padding-left: 0.8em;
+    display: inline;
+}
+
+.Nav_linksContainer {
+    display: inline;
+    align-self: center;
+}
+
+.Nav_links {
+    text-decoration: none;
+    margin-right: 0.8em;
+}

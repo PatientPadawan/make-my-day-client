@@ -1,0 +1,19 @@
+.App_header {
+    padding: 1% 0;
+    background-color: #aaa;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+section {
+    min-height: 6em;
+    padding: 6% 0;
+    background-color: #bbb;
+}
+
+section:nth-child(even) {
+    background-color: #ddd;
+}

@@ -1,0 +1,83 @@
+.ContactForm_list {
+ margin: 0 auto;
+ max-width: 400px;
+ padding: 0 12px 10px 20px;
+ font-size: 13px;
+}
+
+.ContactForm_list li {
+    padding: 0;
+    display: block;
+	list-style: none;
+	margin: 10px 0 0 0;
+}
+
+.ContactForm_list label {
+    margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+}
+
+.ContactForm_list input[type=text], 
+.ContactForm_list input[type=date],
+.ContactForm_list input[type=datetime],
+.ContactForm_list input[type=number],
+.ContactForm_list input[type=search],
+.ContactForm_list input[type=time],
+.ContactForm_list input[type=url],
+.ContactForm_list input[type=email],
+textarea, 
+select{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;	
+}
+.ContactForm_list input[type=text]:focus, 
+.ContactForm_list input[type=date]:focus,
+.ContactForm_list input[type=datetime]:focus,
+.ContactForm_list input[type=number]:focus,
+.ContactForm_list input[type=search]:focus,
+.ContactForm_list input[type=time]:focus,
+.ContactForm_list input[type=url]:focus,
+.ContactForm_list input[type=email]:focus,
+.ContactForm_list textarea:focus, 
+.ContactForm_list select:focus{
+	-moz-box-shadow: 0 0 8px #88D5E9;
+	-webkit-box-shadow: 0 0 8px #88D5E9;
+	box-shadow: 0 0 8px #88D5E9;
+	border: 1px solid #88D5E9;
+}
+.ContactForm_list .field-divided{
+	width: 49%;
+}
+
+.ContactForm_list .field-long{
+	width: 100%;
+}
+.ContactForm_list .field-select{
+	width: 100%;
+}
+.ContactForm_list .field-textarea{
+	height: 100px;
+}
+.ContactForm_list input[type=submit], .ContactForm_list input[type=button]{
+	background: #4B99AD;
+	padding: 8px 15px 8px 15px;
+	border: none;
+	color: #fff;
+}
+.ContactForm_list input[type=submit]:hover, .ContactForm_list input[type=button]:hover{
+	background: #4691A4;
+	box-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+}

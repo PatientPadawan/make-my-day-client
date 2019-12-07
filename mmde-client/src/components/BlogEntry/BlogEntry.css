@@ -1,0 +1,15 @@
+.Entry_images {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 2px;
+    width: 14em;
+    margin-top: 2em;
+}
+
+.Entry_title {
+    margin-bottom: 0;
+}
+
+.Entry_date {
+    font-size: 12px;
+}

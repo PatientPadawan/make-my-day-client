@@ -1,0 +1,12 @@
+footer {
+    font-size: 12px;
+}
+
+.Footer_icons {
+    margin-top: 1em;
+}
+
+#Footer_copyright {
+    display: inline;
+    padding-left: 0.4em;
+}
