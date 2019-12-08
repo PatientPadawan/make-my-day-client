@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { now } from 'moment';
 
 const BlogContext = React.createContext({
     blogPosts: [],
@@ -8,6 +7,7 @@ const BlogContext = React.createContext({
     clearError: () => {},
     setBlogPosts: () => {},
     addPost: () => {},
+    updateBlogPost: () => {},
 })
 
 export default BlogContext
@@ -17,6 +17,14 @@ export class BlogContextProvider extends Component {
         blogPosts: [],
         error: null,
     };
+
+    updateBlogPost = (postIndex, newContent) => {
+        this.setState(prevState => ({
+            blogPosts: prevState.blogPosts.map(
+                post => post.index === postIndex ? {...post, content: `${newContent}`} : post
+            )
+        }))
+    }
 
     addPost = post => {
         this.setState({
@@ -45,6 +53,7 @@ export class BlogContextProvider extends Component {
             clearError: this.clearError,
             setBlogPosts: this.setBlogPosts,
             addPost: this.addPost,
+            updateBlogPost: this.updateBlogPost,
         }
         return(
             <BlogContext.Provider value={value}>
