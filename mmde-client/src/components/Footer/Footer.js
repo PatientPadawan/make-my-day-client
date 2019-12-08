@@ -5,6 +5,7 @@ import './Footer.css'
 export default function Footer() {
     return (
       <>
+        <p>{'placeholder for social media links'}</p>
         <FontAwesomeIcon
             size='1x'
             icon='copyright'

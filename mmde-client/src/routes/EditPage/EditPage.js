@@ -1,26 +1,28 @@
 import React, { Component } from 'react'
 import { Editor } from '@tinymce/tinymce-react'
-import DATASTORE from '../../DATASTORE'
 import BlogEntry from '../../components/BlogEntry/BlogEntry'
+import BlogApiService from '../../services/blog-api-service'
+import BlogContext from '../../contexts/BlogContext'
 import './EditPage.css'
 
 
 export default class EditPage extends Component {
+    static contextType = BlogContext
+
     handleEditorChange = (e) => {
         console.log('Content was updated:', e.target.getContent());
     }
   
     render() {
-        const openPost = DATASTORE.BLOGPOSTS.find(({ index }) => index == this.props.match.params.postIndex);
-    
+        const postToEdit = BlogApiService.getBlogByIndex(this.props.match.params.postIndex, this.context.blogPosts);
         return(
             <section>
-                <BlogEntry entries={openPost} />
+                <BlogEntry entries={postToEdit} />
                 <Editor
-                    initialValue={openPost.content}
+                    initialValue={postToEdit.content}
                     init={{
                         height: 500,
-                        menubar: false,
+                        menubar: true,
                         plugins: [
                             'advlist autolink lists link image charmap print preview anchor',
                             'searchreplace visualblocks code fullscreen',
