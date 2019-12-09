@@ -7,7 +7,6 @@ export default class PostEditor extends Component {
     static contextType = BlogContext
 
     handleEditorChange = (e) => {
-        console.log('Content was updated:');
         this.context.updateBlogPost(this.props.postToEdit.index, e.target.getContent());
     }
 

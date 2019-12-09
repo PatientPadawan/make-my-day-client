@@ -11,7 +11,7 @@ export default class BlogEntry extends Component {
                 <h3 className='Entry_title'>{this.props.entries.title}</h3>
                 <Moment className='Entry_date' format='MMMM Do, YYYY'>{dateToFormat}</Moment>
                 <img crossOrigin='anonymous' src={this.props.entries.image} alt='DJ services' className='Entry_images'/>
-                <div dangerouslySetInnerHTML={{__html: this.props.entries.content}}></div>
+                <div dangerouslySetInnerHTML={{__html: this.props.entries.content}} className='Entry_content'></div>
                 <AdminControls postId={this.props.entries.index} published={this.props.entries.published}/>
             </>
         )
