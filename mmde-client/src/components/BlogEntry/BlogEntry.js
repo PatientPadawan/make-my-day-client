@@ -30,7 +30,7 @@ export default class BlogEntry extends Component {
 
         // conditionally rendering admin controls
         const adminControls = this.props.loggedIn ?
-        <AdminControls postId={this.props.entries.index} published={this.props.entries.published}/> :
+        <AdminControls postIndex={this.props.entries.index} published={this.props.entries.published}/> :
         null;
 
         // expand collapse icon logic

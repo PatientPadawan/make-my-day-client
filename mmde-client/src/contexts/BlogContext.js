@@ -7,6 +7,8 @@ const BlogContext = React.createContext({
     clearError: () => {},
     setBlogPosts: () => {},
     addPost: () => {},
+    delPost: () => {},
+    pubPost: () => {},
     updateBlogPost: () => {},
 })
 
@@ -19,16 +21,36 @@ export class BlogContextProvider extends Component {
     };
 
     updateBlogPost = (postIndex, newContent) => {
-        this.setState(prevState => ({
-            blogPosts: prevState.blogPosts.map(
-                post => post.index === postIndex ? {...post, content: `${newContent}`} : post
+        this.setState({
+            blogPosts: this.state.blogPosts.map(
+                post => post.index === postIndex ? 
+                {...post, content: `${newContent}`} : 
+                post
             )
-        }))
+        })
     }
 
     addPost = post => {
         this.setState({
             blogPosts: [post, ...this.state.blogPosts]
+        })
+    }
+
+    delPost = postIndex => {
+        this.setState({
+            blogPosts: this.state.blogPosts.filter((el) => {
+                return el.index !== postIndex;
+            })
+        })
+    }
+
+    pubPost = postIndex => {
+        this.setState({
+            blogPosts: this.state.blogPosts.map(
+                post => post.index === postIndex ?
+                {...post, published: !post.published} :
+                post
+            )
         })
     }
 
@@ -53,6 +75,8 @@ export class BlogContextProvider extends Component {
             clearError: this.clearError,
             setBlogPosts: this.setBlogPosts,
             addPost: this.addPost,
+            delPost: this.delPost,
+            pubPost: this.pubPost,
             updateBlogPost: this.updateBlogPost,
         }
         return(

@@ -5,7 +5,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUserCog, faHome, faSignInAlt, faSignOutAlt, faFileSignature, faImages, faPlusSquare, faCopyright, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
 import { BlogContextProvider } from './contexts/BlogContext';
-import { BlogEntryProvider } from './contexts/BlogEntryContext';
 import App from './components/App/App';
 import './index.css';
 
@@ -26,9 +25,7 @@ library.add(
 ReactDOM.render(
     <BrowserRouter>
         <BlogContextProvider>
-            <BlogEntryProvider>
-                <App />
-            </BlogEntryProvider>
+            <App />
         </BlogContextProvider>
     </BrowserRouter>,
     document.getElementById('root')
