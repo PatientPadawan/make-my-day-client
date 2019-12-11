@@ -26,9 +26,17 @@ export default withAuth(class BlogList extends Component {
 
     render() {
         const blogList = [];
-        {this.props.entries.forEach((entry, i) => {
-            blogList.push(<section><BlogEntry key={i} entries={this.props.entries[i]} loggedIn={this.state.authenticated}/></section>)
-        })}
+        this.props.entries.forEach((entry, i) => {
+            blogList.push(
+                <section>
+                    <BlogEntry 
+                        key={i} 
+                        entries={this.props.entries[i]} 
+                        loggedIn={this.state.authenticated}
+                    />
+                </section>
+            )
+        })
 
         return(
             <>

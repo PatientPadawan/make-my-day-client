@@ -50,7 +50,7 @@ export default class Hero extends Component {
 
         return (
             <header role="banner">
-                <ImageGallery items={images} />
+                <ImageGallery items={images} autoPlay={true}/>
             </header>
         )
     }

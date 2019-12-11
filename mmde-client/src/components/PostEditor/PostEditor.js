@@ -5,29 +5,43 @@ import './PostEditor.css';
 
 export default class PostEditor extends Component {
     static contextType = BlogContext
+    constructor(props) {
+        super(props);
 
-    handleEditorChange = (e) => {
-        this.context.updateBlogPost(this.props.postToEdit.index, e.target.getContent());
+        this.state = { content: this.props.postToEdit.content };
+        this.handleEditorChange = this.handleEditorChange.bind(this)
+    }
+
+    handleEditorChange(content) {
+        this.setState({ content });
+    }
+
+    handleUpdatePost = (e) => {
+        this.context.updateBlogPost(this.props.postToEdit.index, this.state.content)
     }
 
     render() {
         return(
-            <Editor
-                    initialValue={this.props.postToEdit.content}
+            <>
+                <Editor
+                    value={this.state.content}
                     init={{
                         height: 500,
                         menubar: true,
+                        forced_root_block: false,
                         plugins: [
                             'advlist autolink lists link image charmap print preview anchor',
                             'searchreplace visualblocks code fullscreen',
                             'insertdatetime media table paste code help wordcount'
                         ],
                         toolbar:
-                            'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+                            'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
                         }
                     }
-                    onChange={this.handleEditorChange}
-            />
+                    onEditorChange={this.handleEditorChange}
+                />
+                <button onClick={this.handleUpdatePost}>Update post</button>
+            </>
         )
     }
 }

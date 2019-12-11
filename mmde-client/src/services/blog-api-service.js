@@ -2,7 +2,8 @@ import DATASTORE from '../DATASTORE'
 
 const BlogApiService = {
     getBlogByIndex(blogIndex, blogPosts) {
-        return blogPosts.find(({ index }) => index == blogIndex)
+        const numBlogIndex = parseInt(blogIndex)
+        return blogPosts.find(({ index }) => index === numBlogIndex)
     },
     getBlogPosts() {
         return new Promise((resolve, reject) => {

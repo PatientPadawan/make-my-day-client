@@ -42,7 +42,7 @@ export default class AdminPage extends Component {
                             icon='plus-square'
                             className='Admin_icons'
                         />
-                        <h3 id='Admin_postButton'>Post</h3>
+                        <h3 id='Admin_post'>Post</h3>
                     </button>
                 </section>
                 <BlogList entries={blogPosts} />
