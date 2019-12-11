@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import BlogList from '../../components/BlogList/BlogList'
-import BlogContext from '../../contexts/BlogContext'
-import BlogApiService from '../../services/blog-api-service'
-import './EventsBlog.css'
+import React, { Component } from 'react';
+import BlogList from '../../components/BlogList/BlogList';
+import BlogContext from '../../contexts/BlogContext';
+import BlogApiService from '../../services/blog-api-service';
+import NavBar from '../../components/NavBar/NavBar';
+import './EventsBlog.css';
 
 export default class EventsBlog extends Component {
   static contextType = BlogContext
@@ -17,7 +18,10 @@ export default class EventsBlog extends Component {
   render() {
     const { blogPosts = [] } = this.context
     return(
-      <BlogList entries={blogPosts} />
+      <>
+        <NavBar />
+        <BlogList entries={blogPosts} />
+      </>
     )
   }
 }

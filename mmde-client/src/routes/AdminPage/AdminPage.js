@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import BlogList from '../../components/BlogList/BlogList'
-import BlogContext from '../../contexts/BlogContext'
-import BlogApiService from '../../services/blog-api-service'
-import './AdminPage.css'
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import BlogList from '../../components/BlogList/BlogList';
+import BlogContext from '../../contexts/BlogContext';
+import BlogApiService from '../../services/blog-api-service';
+import NavBar from '../../components/NavBar/NavBar';
+import './AdminPage.css';
 
 export default class AdminPage extends Component {
     static contextType = BlogContext
@@ -33,6 +34,7 @@ export default class AdminPage extends Component {
         const { blogPosts = [] } = this.context
         return(
             <>
+                <NavBar />
                 <section>
                     <button onClick={this.handleAddPost} className='Admin_addPost'>
                         <FontAwesomeIcon

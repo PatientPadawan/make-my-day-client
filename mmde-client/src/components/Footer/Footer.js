@@ -1,12 +1,12 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './Footer.css'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './Footer.css';
 
 export default function Footer() {
     return (
       <>
         <div>
-          <a href="https://www.facebook.com/pages/category/Product-Service/Make-My-Day-Entertainment-2036208030018445/" target="_blank">
+          <a href="https://www.facebook.com/pages/category/Product-Service/Make-My-Day-Entertainment-2036208030018445/" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon
               size='2x'
               icon={['fab', 'facebook-square']}

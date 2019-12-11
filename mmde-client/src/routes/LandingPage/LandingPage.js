@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import NavBar from '../../components/NavBar/NavBar'
 import './LandingPage.css'
 
 export default function LandingPage() {
     return (
         <>
+            <NavBar />
             <section>
                 <h3 className='Landing_headers'>Experience Exquisite Events</h3>
                 <p className='Landing_content'>We believe in moments that create lasting memories and impressions. We also understand managing the production can be a hassle. Let us handle behind the scenes work while you revel in your moment.</p>

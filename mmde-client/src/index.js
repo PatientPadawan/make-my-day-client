@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUserCog, faHome, faSignInAlt, faFileSignature, faImages, faPlusSquare, faCopyright } from '@fortawesome/free-solid-svg-icons';
+import { faUserCog, faHome, faSignInAlt, faSignOutAlt, faFileSignature, faImages, faPlusSquare, faCopyright, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
 import { BlogContextProvider } from './contexts/BlogContext';
 import { BlogEntryProvider } from './contexts/BlogEntryContext';
@@ -15,9 +15,12 @@ library.add(
     faImages, // our work button
     faFileSignature, // contact us button
     faSignInAlt, // sign in button
+    faSignOutAlt, // sign out button
     faPlusSquare, // add new post button
     faCopyright,
     faFacebookSquare, // facebook social media link
+    faPlus, // section expand button
+    faMinus, // section collapse button
 )
 
 ReactDOM.render(

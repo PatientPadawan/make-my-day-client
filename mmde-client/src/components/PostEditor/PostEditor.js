@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Editor } from '@tinymce/tinymce-react'
-import BlogContext from '../../contexts/BlogContext'
-import './PostEditor.css'
+import React, { Component } from 'react';
+import { Editor } from '@tinymce/tinymce-react';
+import BlogContext from '../../contexts/BlogContext';
+import './PostEditor.css';
 
 export default class PostEditor extends Component {
     static contextType = BlogContext
@@ -23,9 +23,7 @@ export default class PostEditor extends Component {
                             'insertdatetime media table paste code help wordcount'
                         ],
                         toolbar:
-                            'undo redo | formatselect | bold italic backcolor | \
-                            alignleft aligncenter alignright alignjustify | \
-                            bullist numlist outdent indent | removeformat | help'
+                            'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
                         }
                     }
                     onChange={this.handleEditorChange}
