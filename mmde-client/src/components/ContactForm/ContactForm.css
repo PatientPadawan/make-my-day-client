@@ -51,10 +51,10 @@ select{
 .ContactForm_list input[type=email]:focus,
 .ContactForm_list textarea:focus, 
 .ContactForm_list select:focus{
-	-moz-box-shadow: 0 0 8px #88D5E9;
-	-webkit-box-shadow: 0 0 8px #88D5E9;
-	box-shadow: 0 0 8px #88D5E9;
-	border: 1px solid #88D5E9;
+	-moz-box-shadow: 0 0 8px #875A59;
+	-webkit-box-shadow: 0 0 8px #875A59;
+	box-shadow: 0 0 8px #875A59;
+	border: 1px solid #875A59;
 }
 .ContactForm_list .field-divided{
 	width: 49%;
@@ -70,14 +70,11 @@ select{
 	height: 100px;
 }
 .ContactForm_list input[type=submit], .ContactForm_list input[type=button]{
-	background: #4B99AD;
+	background: #875a59;
 	padding: 8px 15px 8px 15px;
 	border: none;
-	color: #fff;
+	color: #fafafa;
 }
 .ContactForm_list input[type=submit]:hover, .ContactForm_list input[type=button]:hover{
-	background: #4691A4;
-	box-shadow:none;
-	-moz-box-shadow:none;
-	-webkit-box-shadow:none;
+	background: #9E607C;
 }

@@ -1,10 +1,12 @@
 footer {
     font-size: 12px;
-    background-color: #93CFC2;
+    background-color: #345268;
+    border-top: solid 1px #f2f2f2
 }
 
 .Footer_icons {
     margin-top: 1em;
+    color: #f2f2f2
 }
 
 #Footer_copyright {

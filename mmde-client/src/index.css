@@ -3,7 +3,7 @@
 }
 
 html {
-  background-color: #93CFC2;
+  background-color: #345268;
 }
 
 body {
@@ -16,6 +16,7 @@ body {
   font-size: 20px;
   text-align: center;
   line-height: 1.5;
+  color: #F2F2F2;
 }
 
 code {

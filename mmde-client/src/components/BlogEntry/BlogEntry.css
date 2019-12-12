@@ -43,6 +43,7 @@
 .Entry_content {
     width: 85%;
     margin: auto;
+    text-align: left;
 }
 
 .Entry_contentCollapseContainer {

@@ -48,7 +48,13 @@ export default withAuth(class NavBar extends Component {
         return(
             <header className='App_header'>
                 <nav role='navigation'>
-                    <h3 id='Nav_logo'>MMDE</h3>
+                    <h3 id='Nav_logo'>
+                        <FontAwesomeIcon
+                            size='1x'
+                            icon='grin-alt'
+                            className='Nav_linkIcons'
+                        />
+                    </h3>
                     <div className='Nav_linksContainer'>
                         {adminLink}
                         <Link className='Nav_links' to='/'>

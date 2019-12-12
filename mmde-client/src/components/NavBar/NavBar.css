@@ -1,13 +1,14 @@
 Nav {
     display: flex;
     justify-content: space-between;
-    background-color: #93CFC2;
+    background-color: #345268;
 }
 
 #Nav_logo {
     text-align: left;
     padding-left: 0.8em;
     display: inline;
+    color: #F2F2F2;
 }
 
 .Nav_linksContainer {
@@ -18,12 +19,12 @@ Nav {
 .Nav_links {
     text-decoration: none;
     margin-right: 0.8em;
-    color: #FFFAF2;
+    color: #F2F2F2;
 }
 
 .Nav_linksButton {
     background: none;
-	color: #FFFAF2;
+	color: #F2F2F2;
 	border: none;
 	padding: 0;
 	font: inherit;

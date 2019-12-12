@@ -41,11 +41,11 @@ export default class BlogEntry extends Component {
         // html ---> react parser logic
         const questionableHtml = this.props.entries.content
         const cleanHtml = sanitizer(questionableHtml)
-        const availableHeaderTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+        const remainingHeaderTags = ['h2', 'h3', 'h4', 'h5', 'h6']
         const availableContentTags = ['a', 'p']
         const options = {
             replace: ({ name, children, attribs }) => {
-                if (availableHeaderTags.indexOf(name) !== -1) {
+                if(name === 'h1') {
                     return(
                         <div className='Entry_titleContainer'>
                             <h3 className='Entry_title'>
@@ -58,6 +58,17 @@ export default class BlogEntry extends Component {
                             >
                                 {iconToRender}
                             </button>
+                        </div>
+                    )
+                }
+
+                if (remainingHeaderTags.indexOf(name) !== -1) {
+                    return(
+                        <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
+                            <h4 className='Entry_content'>
+                                {domToReact(children[0].data, options)}
+                            </h4>
+                            {adminControls}
                         </div>
                     )
                 }

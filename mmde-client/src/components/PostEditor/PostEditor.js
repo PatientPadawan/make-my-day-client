@@ -29,13 +29,16 @@ export default class PostEditor extends Component {
                         height: 500,
                         menubar: true,
                         forced_root_block: false,
+                        visualblocks_default_state: true,
+                        br_in_pe: false,
+                        invalid_elements: "span",
                         plugins: [
-                            'advlist autolink lists link image charmap print preview anchor',
+                            'advlist autolink lists link image charmap print anchor',
                             'searchreplace visualblocks code fullscreen',
-                            'insertdatetime media table paste code help wordcount'
+                            'insertdatetime media table paste code wordcount'
                         ],
                         toolbar:
-                            'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+                            'undo redo | formatselect | bullist numlist | removeformat'
                         }
                     }
                     onEditorChange={this.handleEditorChange}
