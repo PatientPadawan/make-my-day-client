@@ -36,7 +36,7 @@ export default class BlogEntry extends Component {
         // expand collapse icon logic
         const iconToRender = this.state.collapsed ?
         <FontAwesomeIcon size='2x' icon='plus' className='Entry_icons'/> :
-        <FontAwesomeIcon size='2x' icon='minus' className='Entry_icons'/>;
+        <FontAwesomeIcon size='2x' icon='minus' className='Entry_icons'/> ;
 
         // html ---> react parser logic
         const questionableHtml = this.props.entries.content
@@ -46,23 +46,19 @@ export default class BlogEntry extends Component {
         const options = {
             replace: ({ name, children, attribs }) => {
                 if(name === 'h1') {
-                    return(
+                    return( 
                         <div className='Entry_titleContainer'>
                             <h3 className='Entry_title'>
                                 {domToReact(children[0].data, options)}
                             </h3>
-                            <button 
-                                onClick={this.toggleHiddenClass} 
-                                className='Entry_button' 
-                                aria-expanded={!this.state.collapsed}
-                            >
+                            <button onClick={this.toggleHiddenClass} className='Entry_button' aria-expanded={!this.state.collapsed}>
                                 {iconToRender}
                             </button>
                         </div>
                     )
                 }
 
-                if (remainingHeaderTags.indexOf(name) !== -1) {
+                if (remainingHeaderTags.includes(name)) {
                     return(
                         <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
                             <h4 className='Entry_content'>
@@ -86,7 +82,7 @@ export default class BlogEntry extends Component {
                     )
                 }
 
-                if (availableContentTags.indexOf(name) !== -1) {
+                if (availableContentTags.includes(name)) {
                     return(
                         <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
                             <div className='Entry_content'>

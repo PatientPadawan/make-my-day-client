@@ -37,13 +37,13 @@ export default withAuth(class NavBar extends Component {
     }
 
     render() {
-        const logButton = this.state.authenticated ?
+        const logoutLink = this.state.authenticated ?
         <button className='Nav_linksButton' onClick={this.logout}><FontAwesomeIcon size='1x' icon='sign-out-alt' className='Nav_linkIcons'/></button> :
-        <button className='Nav_linksButton' onClick={this.login}><FontAwesomeIcon size='1x' icon='sign-in-alt' className='Nav_linkIcons'/></button> ;
+        null ;
 
         const adminLink = this.state.authenticated ?
         <Link className='Nav_links' to='/admin'><FontAwesomeIcon size='1x' icon='user-cog' className='Nav_linkIcons'/></Link> :
-        null;
+        null ;
     
         return(
             <header className='App_header'>
@@ -78,7 +78,7 @@ export default withAuth(class NavBar extends Component {
                                 className='Nav_linkIcons'
                             />
                         </Link>
-                        {logButton}
+                        {logoutLink}
                     </div>
             </nav>
         </header>
