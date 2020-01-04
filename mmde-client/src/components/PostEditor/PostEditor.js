@@ -31,7 +31,7 @@ export default class PostEditor extends Component {
                         forced_root_block: false,
                         visualblocks_default_state: true,
                         br_in_pe: false,
-                        invalid_elements: "span",
+                        // invalid_elements: "span",
                         plugins: [
                             'advlist autolink lists link image charmap print anchor',
                             'searchreplace visualblocks code fullscreen',

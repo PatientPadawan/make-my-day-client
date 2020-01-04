@@ -15,19 +15,15 @@ export default class BlogEntry extends Component {
         };
 
         this.toggleHiddenClass = this.toggleHiddenClass.bind(this);
+        this.optionsReplace = this.optionsReplace.bind(this);
     }
 
     toggleHiddenClass() {
         const currentCollapseState = this.state.collapsed;
         this.setState({ collapsed: !currentCollapseState });
     }
-    
-    render() {
-        const dateToFormat = this.props.entries.dateCreated
 
-        // prepping for client side XSS cleaning before rendering elements from html
-        const sanitizer = dompurify.sanitize
-
+    optionsReplace({ name, children, attribs }) {
         // conditionally rendering admin controls
         const adminControls = this.props.loggedIn ?
         <AdminControls postIndex={this.props.entries.index} published={this.props.entries.published}/> :
@@ -38,61 +34,70 @@ export default class BlogEntry extends Component {
         <FontAwesomeIcon size='2x' icon='plus' className='Entry_icons'/> :
         <FontAwesomeIcon size='2x' icon='minus' className='Entry_icons'/> ;
 
+        const remainingHeaderTags = ['h2', 'h3', 'h4', 'h5', 'h6']
+        const availableContentTags = ['a', 'p']
+
+        if(name === 'h1') {
+            return( 
+                <div className='Entry_titleContainer'>
+                    <h3 className='Entry_title'>
+                        {domToReact(children[0].data)}
+                    </h3>
+                    <button onClick={this.toggleHiddenClass} className='Entry_button' aria-expanded={!this.state.collapsed}>
+                        {iconToRender}
+                    </button>
+                </div>
+            )
+        }
+
+        if (remainingHeaderTags.includes(name)) {
+            return(
+                <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
+                    <h4 className='Entry_content'>
+                        {domToReact(children[0].data)}
+                    </h4>
+                    {adminControls}
+                </div>
+            )
+        }
+        
+        if (name === 'img') {
+            return(
+                <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
+                    <img 
+                        crossOrigin='anonymous' 
+                        src={attribs.src} 
+                        alt={attribs.alt} 
+                        className='Entry_images' 
+                    />
+                </div>
+            )
+        }
+
+        if (availableContentTags.includes(name)) {
+            return(
+                <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
+                    <div className='Entry_content'>
+                        {domToReact(children[0].data)}
+                    </div>
+                    {adminControls}
+                </div>
+            )
+        }
+    }
+    
+    render() {
+        const dateToFormat = this.props.entries.dateCreated
+
+        // prepping for client side XSS cleaning before rendering elements from html
+        const sanitizer = dompurify.sanitize
+
         // html ---> react parser logic
         const questionableHtml = this.props.entries.content
         const cleanHtml = sanitizer(questionableHtml)
-        const remainingHeaderTags = ['h2', 'h3', 'h4', 'h5', 'h6']
-        const availableContentTags = ['a', 'p']
+       
         const options = {
-            replace: ({ name, children, attribs }) => {
-                if(name === 'h1') {
-                    return( 
-                        <div className='Entry_titleContainer'>
-                            <h3 className='Entry_title'>
-                                {domToReact(children[0].data, options)}
-                            </h3>
-                            <button onClick={this.toggleHiddenClass} className='Entry_button' aria-expanded={!this.state.collapsed}>
-                                {iconToRender}
-                            </button>
-                        </div>
-                    )
-                }
-
-                if (remainingHeaderTags.includes(name)) {
-                    return(
-                        <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
-                            <h4 className='Entry_content'>
-                                {domToReact(children[0].data, options)}
-                            </h4>
-                            {adminControls}
-                        </div>
-                    )
-                }
-                
-                if (name === 'img') {
-                    return(
-                        <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
-                            <img 
-                                crossOrigin='anonymous' 
-                                src={attribs.src} 
-                                alt={attribs.alt} 
-                                className='Entry_images' 
-                            />
-                        </div>
-                    )
-                }
-
-                if (availableContentTags.includes(name)) {
-                    return(
-                        <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
-                            <div className='Entry_content'>
-                                {domToReact(children[0].data, options)}
-                            </div>
-                            {adminControls}
-                        </div>
-                    )
-                }
-            }
+            replace: this.optionsReplace,
         }
         
         const reactFromHtml = parse(cleanHtml, options)
