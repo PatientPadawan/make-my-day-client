@@ -28,24 +28,22 @@ export default withAuth(class BlogList extends Component {
         const blogList = [];
         
         // conditionally rendering unpublished blog posts for admin users
-        this.state.authenticated ? // logged in
+        this.state.authenticated ? // if logged in
             this.props.entries.forEach((entry, i) => {
                 blogList.push(
-                    <section>
-                        <BlogEntry 
-                            key={i} 
+                    <section key={i}>
+                        <BlogEntry  
                             entries={this.props.entries[i]} 
                             loggedIn={this.state.authenticated}
                         />
                     </section>
                 )
-            }) :                  // not logged in
+            }) :                  // if not logged in
             this.props.entries.forEach((entry, i) => {
                 if (this.props.entries[i].published === true) {
                     blogList.push(
-                        <section>
+                        <section key={i}>
                             <BlogEntry 
-                                key={i} 
                                 entries={this.props.entries[i]} 
                                 loggedIn={this.state.authenticated}
                             />
