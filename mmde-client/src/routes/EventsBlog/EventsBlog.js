@@ -10,9 +10,16 @@ export default class EventsBlog extends Component {
 
   componentDidMount() {
     this.context.clearError()
-    BlogApiService.getBlogPosts()
-    .then(this.context.setBlogPosts)
-    .catch(this.context.setError)
+    this.getBlogFromDB();
+  }
+
+  async getBlogFromDB() {
+    try {
+      BlogApiService.getBlogPosts()
+        .then(this.context.setBlogPosts)
+    } catch (err) {
+        this.context.setError(err)
+    }
   }
 
   render() {

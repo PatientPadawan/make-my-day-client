@@ -23,9 +23,16 @@ export default class AdminPage extends Component {
     
     componentDidMount() {
         this.context.clearError()
+        this.getBlogFromDB();
+    }
+  
+    async getBlogFromDB() {
+      try {
         BlogApiService.getBlogPosts()
-        .then(this.context.setBlogPosts)
-        .catch(this.context.setError)
+          .then(this.context.setBlogPosts)
+      } catch (err) {
+          this.context.setError(err)
+      }
     }
     
     render() {

@@ -27,47 +27,47 @@ const oktaConfig = {
 export default class App extends Component {
   render() {
     return(
-        <div className='App'>
-          <main role='main' className='App_main'>
-            <Hero />
-            <Router>
-              <Security {...oktaConfig}>
-                <Route
-                  exact
-                  path={'/'}
-                  component={LandingPage}
-                />
-                <SecureRoute
-                  path={'/admin'}
-                  component={AdminPage}
-                />
-                <Route
-                  path={'/our-work'}
-                  component={EventsBlog}
-                />
-                <Route 
-                  path={'/contact'}
-                  component={ContactPage}
-                />
-                <Route
-                  path={`/edit/:postIndex`}
-                  component={EditPage}
-                />
-                <Route
-                  path={`/login`}
-                  render={() => <section><SignInPage baseUrl={`https://${process.env.REACT_APP_OKTA_DOMAIN}`}/></section>}
-                />
-                <Route 
-                  path={`/implicit/callback`}
-                  component={ImplicitCallback}
-                />
-                </Security>
-            </Router>
-          </main>
-          <footer>
-            <Footer />
-          </footer>
-        </div>
+      <div className='App'>
+        <main role='main' className='App_main'>
+          <Hero />
+          <Router>
+            <Security {...oktaConfig}>
+              <Route
+                exact
+                path={'/'}
+                component={LandingPage}
+              />
+              <SecureRoute
+                path={'/admin'}
+                component={AdminPage}
+              />
+              <Route
+                path={'/our-work'}
+                component={EventsBlog}
+              />
+              <Route 
+                path={'/contact'}
+                component={ContactPage}
+              />
+              <Route
+                path={`/edit/:postIndex`}
+                component={EditPage}
+              />
+              <Route
+                path={`/login`}
+                render={() => <section><SignInPage baseUrl={`https://${process.env.REACT_APP_OKTA_DOMAIN}`}/></section>}
+              />
+              <Route 
+                path={`/implicit/callback`}
+                component={ImplicitCallback}
+              />
+              </Security>
+          </Router>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     );
   }
 }
