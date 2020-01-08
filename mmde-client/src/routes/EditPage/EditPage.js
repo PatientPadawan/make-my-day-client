@@ -11,7 +11,7 @@ export default class EditPage extends Component {
     static contextType = BlogContext
   
     render() {
-        const postToEdit = BlogApiService.getBlogByIndex(this.props.match.params.postIndex, this.context.blogPosts);
+        const postToEdit = BlogApiService.getBlogById(this.props.match.params.postId, this.context.blogPosts);
         return(
             <>
                 <NavBar />

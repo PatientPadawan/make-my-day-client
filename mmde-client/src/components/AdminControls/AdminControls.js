@@ -8,17 +8,17 @@ export default class AdminControls extends Component {
 
     render() {
         const publishState = (this.props.published) ? 'Unpublish' : 'Publish'
-        const editLink = `/edit/${this.props.postIndex}`
+        const editLink = `/edit/${this.props.postId}`
         return(
             <>
                 <button 
-                    onClick={() => this.context.pubPost(this.props.postIndex)}
+                    onClick={() => this.context.pubPost(this.props.postId)}
                 >
                     {publishState}
                 </button>
                 <button 
                     onClick={() => 
-                        {if(window.confirm('Delete the item?')){this.context.delPost(this.props.postIndex)};}
+                        {if(window.confirm('Delete the item?')){this.context.delPost(this.props.postId)};}
                     }
                 >
                     Delete

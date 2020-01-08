@@ -28,7 +28,7 @@ export default class BlogEntry extends Component {
         const availableContentTags = ['a', 'p']
         // conditionally rendering admin controls
         const adminControls = this.props.loggedIn ?
-        <AdminControls postIndex={this.props.entries.index} published={this.props.entries.published}/> :
+        <AdminControls postId={this.props.entries.id} published={this.props.entries.published}/> :
         null;
         // expand collapse icon logic
         const iconToRender = this.state.collapsed ?
@@ -81,7 +81,7 @@ export default class BlogEntry extends Component {
     }
     
     render() {
-        const dateToFormat = this.props.entries.dateCreated
+        const dateToFormat = this.props.entries.createdAt
         // prepping for client side XSS cleaning before rendering elements from html
         const sanitizer = dompurify.sanitize
         // html ---> react parser logic
@@ -91,16 +91,14 @@ export default class BlogEntry extends Component {
 
         return(
             <>
-                <div>
-                    {reactFromHtml}
-                    <div className='Entry_dateContainer'>
-                        <Moment 
-                            className={this.state.collapsed ? 'Entry_date': 'Entry_contentCollapseContainer'} 
-                            format='MMMM Do, YYYY'
-                        >
-                            {dateToFormat}
-                        </Moment>
-                    </div>
+                {reactFromHtml}
+                <div className='Entry_dateContainer'>
+                    <Moment 
+                        className={this.state.collapsed ? 'Entry_date': 'Entry_contentCollapseContainer'} 
+                        format='MMMM Do, YYYY'
+                    >
+                        {dateToFormat}
+                    </Moment>
                 </div>
             </>
         )

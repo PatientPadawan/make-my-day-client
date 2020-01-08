@@ -1,9 +1,9 @@
 import config from '../config';
 
 const BlogApiService = {
-    getBlogByIndex(blogIndex, blogPosts) {
-        const numBlogIndex = parseInt(blogIndex)
-        return blogPosts.find(({ index }) => index === numBlogIndex)
+    getBlogById(blogId, blogPosts) {
+        const numBlogId = parseInt(blogId)
+        return blogPosts.find(({ id }) => id === numBlogId)
     },
     async getBlogPosts() {
         const res = await fetch(`${config.API_BASE_URL}/blogpost`);

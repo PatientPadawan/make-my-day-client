@@ -20,10 +20,10 @@ export class BlogContextProvider extends Component {
         error: null,
     };
 
-    updateBlogPost = (postIndex, newContent) => {
+    updateBlogPost = (postId, newContent) => {
         this.setState({
             blogPosts: this.state.blogPosts.map(
-                post => post.index === postIndex ? 
+                post => post.id === postId ? 
                 {...post, content: `${newContent}`} : 
                 post
             )
@@ -36,18 +36,18 @@ export class BlogContextProvider extends Component {
         })
     }
 
-    delPost = postIndex => {
+    delPost = postId => {
         this.setState({
             blogPosts: this.state.blogPosts.filter((el) => {
-                return el.index !== postIndex;
+                return el.id !== postId;
             })
         })
     }
 
-    pubPost = postIndex => {
+    pubPost = postId => {
         this.setState({
             blogPosts: this.state.blogPosts.map(
-                post => post.index === postIndex ?
+                post => post.id === postId ?
                 {...post, published: !post.published} :
                 post
             )

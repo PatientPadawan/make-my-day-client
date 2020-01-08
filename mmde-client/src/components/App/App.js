@@ -50,7 +50,7 @@ export default class App extends Component {
                 component={ContactPage}
               />
               <Route
-                path={`/edit/:postIndex`}
+                path={`/edit/:postId`}
                 component={EditPage}
               />
               <Route
