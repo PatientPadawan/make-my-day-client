@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import BlogApiService from '../services/blog-api-service'
 
 const BlogContext = React.createContext({
     blogPosts: [],
+    accessToken: null,
     error: null,
+    setAccessToken: () => {},
     setError: () => {},
     clearError: () => {},
     setBlogPosts: () => {},
@@ -20,6 +23,11 @@ export class BlogContextProvider extends Component {
         error: null,
     };
 
+    setAccessToken = (accessToken) => {
+        this.setState({ accessToken })
+    }
+
+    // send to DATABASE YET TO CONFIGURE
     updateBlogPost = (postId, newContent) => {
         this.setState({
             blogPosts: this.state.blogPosts.map(
@@ -30,12 +38,14 @@ export class BlogContextProvider extends Component {
         })
     }
 
-    addPost = post => {
-        this.setState({
-            blogPosts: [post, ...this.state.blogPosts]
-        })
+    addPost = (post, token) => {
+        BlogApiService.addBlogPost(post, token)
+        .then(this.setState({
+            blogPosts: this.state.blogPosts
+        }))
     }
 
+    // YET TO CONFIGURE
     delPost = postId => {
         this.setState({
             blogPosts: this.state.blogPosts.filter((el) => {
@@ -44,6 +54,7 @@ export class BlogContextProvider extends Component {
         })
     }
 
+    // YET TO CONFIGURE
     pubPost = postId => {
         this.setState({
             blogPosts: this.state.blogPosts.map(
@@ -71,6 +82,7 @@ export class BlogContextProvider extends Component {
         const value = {
             blogPosts: this.state.blogPosts,
             error: this.state.error,
+            accessToken: this.state.accessToken,
             setError: this.setError,
             clearError: this.clearError,
             setBlogPosts: this.setBlogPosts,
@@ -78,6 +90,7 @@ export class BlogContextProvider extends Component {
             delPost: this.delPost,
             pubPost: this.pubPost,
             updateBlogPost: this.updateBlogPost,
+            setAccessToken: this.setAccessToken,
         }
         return(
             <BlogContext.Provider value={value}>

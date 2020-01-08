@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '@okta/okta-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import BlogContext from '../../contexts/BlogContext';
 import './NavBar.css';
 
 export default withAuth(class NavBar extends Component {
+    static contextType = BlogContext
+
     constructor(props) {
         super(props);
         this.state = { authenticated: null };
@@ -15,8 +18,12 @@ export default withAuth(class NavBar extends Component {
 
     async checkAuthentication() {
         const authenticated = await this.props.auth.isAuthenticated();
+        const accessToken = await this.props.auth.getAccessToken();
         if (authenticated !== this.state.authenticated) {
             this.setState({ authenticated });
+        }
+        if (accessToken !== this.context.accessToken) {
+            this.context.setAccessToken(accessToken)
         }
     }
 
