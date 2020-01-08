@@ -40,18 +40,21 @@ export class BlogContextProvider extends Component {
 
     addPost = (post, token) => {
         BlogApiService.addBlogPost(post, token)
-        .then(this.setState({
-            blogPosts: this.state.blogPosts
-        }))
+        .then((result) => {
+            this.setState({
+                blogPosts: [...this.state.blogPosts, result]
+            })
+        })
     }
 
     // YET TO CONFIGURE
-    delPost = postId => {
-        this.setState({
+    delPost = (postId, token) => {
+        BlogApiService.deleteBlogPost(postId, token)
+        .then(this.setState({
             blogPosts: this.state.blogPosts.filter((el) => {
                 return el.id !== postId;
             })
-        })
+        }))
     }
 
     // YET TO CONFIGURE

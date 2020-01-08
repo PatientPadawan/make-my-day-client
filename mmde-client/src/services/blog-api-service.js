@@ -23,7 +23,19 @@ const BlogApiService = {
         return await (
             (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
         );
-    }
+    },
+    async deleteBlogPost(postId, token) {
+        const numPostId = parseInt(postId)
+        const res = await fetch(`${config.API_BASE_URL}/blogpost/${numPostId}`, {
+            method: 'DELETE',
+            headers: {
+                'authorization': `Bearer ${token}`,
+            },
+        });
+        return await (
+            (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
+        );
+    },
 }
 
 export default BlogApiService
