@@ -18,7 +18,7 @@ const BlogContext = React.createContext({
 export default BlogContext
 
 export class BlogContextProvider extends Component {
-    state ={
+    state = {
         blogPosts: [],
         error: null,
     };
@@ -27,16 +27,31 @@ export class BlogContextProvider extends Component {
         this.setState({ accessToken })
     }
 
-    // send to DATABASE YET TO CONFIGURE
-    updateBlogPost = (postId, newContent) => {
-        this.setState({
+    updateBlogPost = (postId, newContent, token) => {
+        BlogApiService.putBlogPostContent(postId, newContent, token)
+        .then((result) => {
+            this.setState({
+                blogPosts: this.state.blogPosts.map(
+                    post => post.id === postId ? 
+                    {...post, content: `${result.content}`} : 
+                    post
+                )
+            })
+        })
+    }
+
+    pubPost = (postId, token) => {
+        const targetPost = BlogApiService.getBlogById(postId, this.state.blogPosts)
+        
+        BlogApiService.putBlogPostPublish(postId, !targetPost.published, token)
+        .then(this.setState({
             blogPosts: this.state.blogPosts.map(
-                post => post.id === postId ? 
-                {...post, content: `${newContent}`} : 
+                post => post.id === postId ?
+                {...post, published: !post.published} :
                 post
             )
         })
-    }
+    )}
 
     addPost = (post, token) => {
         BlogApiService.addBlogPost(post, token)
@@ -47,26 +62,14 @@ export class BlogContextProvider extends Component {
         })
     }
 
-    // YET TO CONFIGURE
     delPost = (postId, token) => {
         BlogApiService.deleteBlogPost(postId, token)
         .then(this.setState({
             blogPosts: this.state.blogPosts.filter((el) => {
                 return el.id !== postId;
             })
-        }))
-    }
-
-    // YET TO CONFIGURE
-    pubPost = postId => {
-        this.setState({
-            blogPosts: this.state.blogPosts.map(
-                post => post.id === postId ?
-                {...post, published: !post.published} :
-                post
-            )
         })
-    }
+    )}
 
     setBlogPosts = blogPosts => {
         this.setState({ blogPosts })

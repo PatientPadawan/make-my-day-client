@@ -36,6 +36,40 @@ const BlogApiService = {
             (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
         );
     },
+    async putBlogPostContent(postId, newContent, token) {
+        const postToPut = {
+            content: `${newContent}`
+        }
+        const numPostId = parseInt(postId)
+        const res = await fetch(`${config.API_BASE_URL}/blogpost/${numPostId}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(postToPut),
+        });
+        return await (
+            (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
+        );
+    },
+    async putBlogPostPublish(postId, publishState, token) {
+        const postToPut = {
+            published: `${publishState}`
+        }
+        const numPostId = parseInt(postId)
+        const res = await fetch(`${config.API_BASE_URL}/blogpost/${numPostId}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(postToPut),
+        });
+        return await (
+            (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json()
+        );
+    },
 }
 
 export default BlogApiService

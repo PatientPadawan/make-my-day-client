@@ -12,7 +12,7 @@ export default class AdminControls extends Component {
         return(
             <>
                 <button 
-                    onClick={() => this.context.pubPost(this.props.postId)}
+                    onClick={() => this.context.pubPost(this.props.postId, this.context.accessToken)}
                 >
                     {publishState}
                 </button>

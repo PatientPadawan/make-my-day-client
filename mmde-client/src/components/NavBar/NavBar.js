@@ -7,7 +7,6 @@ import './NavBar.css';
 
 export default withAuth(class NavBar extends Component {
     static contextType = BlogContext
-
     constructor(props) {
         super(props);
         this.state = { authenticated: null };

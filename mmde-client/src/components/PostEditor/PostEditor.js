@@ -17,7 +17,7 @@ export default class PostEditor extends Component {
     }
 
     handleUpdatePost = (e) => {
-        this.context.updateBlogPost(this.props.postToEdit.id, this.state.content)
+        this.context.updateBlogPost(this.props.postToEdit.id, this.state.content, this.context.accessToken)
     }
 
     render() {
