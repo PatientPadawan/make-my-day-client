@@ -9,7 +9,7 @@ export default function LandingPage() {
         <>
             <NavBar />
             <Hero />
-            <section>
+            <section id='Landing_firstSection'>
                 <h3 className='Landing_headers'>Experience Exquisite Events</h3>
                 <p className='Landing_content'>We believe in moments that create lasting memories and impressions. We also understand managing the production can be a hassle. Let us handle behind the scenes work while you revel in your moment.</p>
                 <Link className='Section_links' to={'/contact'}>

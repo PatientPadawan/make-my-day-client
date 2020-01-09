@@ -20,3 +20,7 @@ a.Section_links:hover{
     margin: auto;
     margin-bottom: 1em;
 }
+
+#Landing_firstSection {
+    margin-top: 0;
+}

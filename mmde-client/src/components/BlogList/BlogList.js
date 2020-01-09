@@ -54,8 +54,8 @@ export default withAuth(class BlogList extends Component {
                 }
         });
 
-        blogList.reverse()
-
+        // blogList.reverse()
+          //  console.log(this.props.entries)
         return(
             <>
                 {blogList}

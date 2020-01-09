@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import EventsBlog from '../../routes/EventsBlog/EventsBlog';
 import ContactPage from '../../routes/ContactPage/ContactPage';
@@ -30,6 +31,7 @@ export default class App extends Component {
         <main role='main' className='App_main'>
           <Router>
             <Security {...oktaConfig}>
+              <ScrollToTop />
               <Route
                 exact
                 path={'/'}
