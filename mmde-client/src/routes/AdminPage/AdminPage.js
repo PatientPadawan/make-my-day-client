@@ -36,7 +36,7 @@ export default class AdminPage extends Component {
         return(
             <>
                 <NavBar />
-                <section>
+                <section id='Admin_addPostSection'>
                     <button onClick={this.handleAddPost} className='Admin_addPost'>
                         <FontAwesomeIcon
                             size='3x'

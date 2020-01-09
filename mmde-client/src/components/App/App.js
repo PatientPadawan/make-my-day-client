@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
-import Hero from '../Hero/Hero';
 import LandingPage from '../../routes/LandingPage/LandingPage';
 import EventsBlog from '../../routes/EventsBlog/EventsBlog';
 import ContactPage from '../../routes/ContactPage/ContactPage';
@@ -29,7 +28,6 @@ export default class App extends Component {
     return(
       <div className='App'>
         <main role='main' className='App_main'>
-          <Hero />
           <Router>
             <Security {...oktaConfig}>
               <Route

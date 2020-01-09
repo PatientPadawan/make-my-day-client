@@ -14,6 +14,10 @@ section {
     padding: 6% 0;
 }
 
+section:first-of-type {
+    margin-top: 4em;
+}
+
 section:nth-child(even) {
     background-color: #7C8E9B;
 }

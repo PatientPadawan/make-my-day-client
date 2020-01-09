@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import BlogContext from '../../contexts/BlogContext';
 import BlogApiService from '../../services/blog-api-service';
+import ValidationError from '../ValidationError/ValidationError';
 import './ContactForm.css'
 
 export default class ContactForm extends Component {
@@ -9,26 +10,29 @@ export default class ContactForm extends Component {
         super(props);
         this.state = {
           name: '',
-          email: '',
+          email: {
+              value: '',
+              touched: false
+          },
           subject: 'Booking',
           message: '',
         }
     }
 
     onNameChange(event) {
-        this.setState({name: event.target.value})
+        this.setState({ name: event.target.value })
     }
     
     onEmailChange(event) {
-        this.setState({email: event.target.value})
+        this.setState({ email: { value: event.target.value, touched: true }})
     }
 
     onSubjectChange(event) {
-        this.setState({subject: event.target.value})
+        this.setState({ subject: event.target.value })
     }
     
     onMessageChange(event) {
-        this.setState({message: event.target.value})
+        this.setState({ message: event.target.value })
     }
     
     handleSubmit(event) {
@@ -43,11 +47,14 @@ export default class ContactForm extends Component {
     }
 
     validateEmail() {
-        const regExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        return !(regExp.test(this.state.email))
+        const regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        if (!regExp.test(this.state.email.value)) {
+            return 'Enter valid email'
+        }
     }
 
     render() {
+        const emailError = this.validateEmail();
         return(
             <>
                 <h3>Contact Us</h3>
@@ -69,9 +76,10 @@ export default class ContactForm extends Component {
                                 type='email' 
                                 name='field3' 
                                 className='field-long'
-                                value={this.state.email} 
+                                value={this.state.email.value} 
                                 onChange={this.onEmailChange.bind(this)}
                             />
+                            {this.state.email.touched && <ValidationError message={emailError}/>}
                         </li>
                         <li>
                             <label>Subject </label>
