@@ -72,6 +72,7 @@ export class BlogContextProvider extends Component {
     )}
 
     setBlogPosts = blogPosts => {
+        blogPosts.sort((a, b) => b.id - a.id);
         this.setState({ blogPosts })
     }
 
