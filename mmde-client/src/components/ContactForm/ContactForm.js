@@ -43,7 +43,7 @@ export default class ContactForm extends Component {
     }
 
     resetForm(){
-        this.setState({name: '', email: '', subject: 'Booking', message: ''})
+        this.setState({name: '', email: { value: '' }, subject: 'Booking', message: ''})
     }
 
     validateEmail() {
