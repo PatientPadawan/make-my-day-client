@@ -37,13 +37,19 @@ export default class ContactForm extends Component {
     
     handleSubmit(event) {
         event.preventDefault();
-        BlogApiService.postContactForm(this.state, this.context.accessToken)
+        const contactInfo = {
+            name: this.state.name,
+            email: this.state.email.value,
+            subject: this.state.subject,
+            message: this.state.message
+        }
+        BlogApiService.postContactForm(contactInfo, this.context.accessToken)
         .then(window.alert('Message sent!'))
         .then(this.resetForm())
     }
 
     resetForm(){
-        this.setState({name: '', email: { value: '' }, subject: 'Booking', message: ''})
+        this.setState({name: '', email: { value: '' }, message: ''})
     }
 
     validateEmail() {
