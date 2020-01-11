@@ -55,9 +55,9 @@ export class BlogContextProvider extends Component {
 
     addPost = (post, token) => {
         BlogApiService.addBlogPost(post, token)
-        .then((result) => {
+        .then((res) => {
             this.setState({
-                blogPosts: [...this.state.blogPosts, result]
+                blogPosts: [res, ...this.state.blogPosts]
             })
         })
     }
