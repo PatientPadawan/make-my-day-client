@@ -17,9 +17,12 @@ export default class AdminControls extends Component {
                     {publishState}
                 </button>
                 <button 
-                    onClick={() => 
-                        {if(window.confirm('Delete the item?')){this.context.delPost(this.props.postId, this.context.accessToken)}}
-                    }
+                    onClick={() => {
+                        if (window.confirm('Delete the item?')) {
+                            this.props.onDelete()
+                            this.context.delPost(this.props.postId, this.context.accessToken)
+                        }
+                    }}
                 >
                     Delete
                 </button>

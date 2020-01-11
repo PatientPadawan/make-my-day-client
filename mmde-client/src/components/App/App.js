@@ -11,7 +11,6 @@ import SignInPage from '../../routes/SignInPage/SignInPage';
 import Footer from '../Footer/Footer';
 import './App.css';
 
-
 function onAuthRequired({history}) {
   history.push('/login');
 }

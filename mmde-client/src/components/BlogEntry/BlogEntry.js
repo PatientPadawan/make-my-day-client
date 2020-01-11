@@ -4,8 +4,9 @@ import dompurify from 'dompurify';
 import parse from 'html-react-parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AdminControls from '../AdminControls/AdminControls';
-import './BlogEntry.css';
 import { H1Component, HeaderComponent, ImageComponent, ContentComponent } from '../HtmlComponents';
+import './BlogEntry.css';
+
 
 export default class BlogEntry extends Component {
     constructor(props) {
@@ -13,9 +14,13 @@ export default class BlogEntry extends Component {
         this.state = {
             collapsed: true,
         };
-
+        this.onDelete = this.onDelete.bind(this);
         this.toggleHiddenClass = this.toggleHiddenClass.bind(this);
         this.optionsReplace = this.optionsReplace.bind(this);
+    }
+
+    onDelete() {
+        this.setState({ collapsed: true })
     }
 
     toggleHiddenClass() {
@@ -76,11 +81,15 @@ export default class BlogEntry extends Component {
     
     render() {
         const dateToFormat = this.props.entries.createdAt
-        // conditionally rendering admin controls
+
         const adminControls = this.props.loggedIn ?
-        <AdminControls postId={this.props.entries.id} published={this.props.entries.published}/> :
+        <AdminControls 
+            postId={this.props.entries.id} 
+            published={this.props.entries.published}
+            onDelete={() => this.onDelete()}
+        /> :
         null;
-        // prepping for client side XSS cleaning before rendering elements from html
+
         const sanitizer = dompurify.sanitize
         const cleanHtml = sanitizer(this.props.entries.content)
         // html ---> react parser logic

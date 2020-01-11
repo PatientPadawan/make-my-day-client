@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BlogContext from '../../contexts/BlogContext';
-import BlogApiService from '../../services/blog-api-service';
+import ContactApiService from '../../services/contact-api-service';
 import ValidationError from '../ValidationError/ValidationError';
 import './ContactForm.css'
 
@@ -43,7 +43,7 @@ export default class ContactForm extends Component {
             subject: this.state.subject,
             message: this.state.message
         }
-        BlogApiService.postContactForm(contactInfo, this.context.accessToken)
+        ContactApiService.postContactForm(contactInfo, this.context.accessToken)
         .then(window.alert('Message sent!'))
         .then(this.resetForm())
     }
