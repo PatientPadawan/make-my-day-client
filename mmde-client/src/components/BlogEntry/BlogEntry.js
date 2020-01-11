@@ -26,10 +26,6 @@ export default class BlogEntry extends Component {
     optionsReplace({ name, children, attribs }) {
         const remainingHeaderTags = ['h2', 'h3', 'h4', 'h5', 'h6']
         const availableContentTags = ['a', 'p']
-        // conditionally rendering admin controls
-        const adminControls = this.props.loggedIn ?
-        <AdminControls postId={this.props.entries.id} published={this.props.entries.published}/> :
-        null;
         // expand collapse icon logic
         const iconToRender = this.state.collapsed ?
         <FontAwesomeIcon size='2x' icon='plus' className='Entry_icons'/> :
@@ -53,7 +49,6 @@ export default class BlogEntry extends Component {
                     {...this.props}
                     children={children}
                     collapsed={this.state.collapsed}
-                    adminControls={adminControls}
                 />
             )
         }
@@ -74,7 +69,6 @@ export default class BlogEntry extends Component {
                     {...this.props}
                     children={children}
                     collapsed={this.state.collapsed}
-                    adminControls={adminControls}
                 />
             )
         }
@@ -82,10 +76,14 @@ export default class BlogEntry extends Component {
     
     render() {
         const dateToFormat = this.props.entries.createdAt
+        // conditionally rendering admin controls
+        const adminControls = this.props.loggedIn ?
+        <AdminControls postId={this.props.entries.id} published={this.props.entries.published}/> :
+        null;
         // prepping for client side XSS cleaning before rendering elements from html
         const sanitizer = dompurify.sanitize
-        // html ---> react parser logic
         const cleanHtml = sanitizer(this.props.entries.content)
+        // html ---> react parser logic
         const options = { replace: this.optionsReplace }
         const reactFromHtml = parse(cleanHtml, options)
 
@@ -99,6 +97,9 @@ export default class BlogEntry extends Component {
                     >
                         {dateToFormat}
                     </Moment>
+                </div>
+                <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
+                    {adminControls}
                 </div>
             </>
         )

@@ -53,14 +53,12 @@ export const ImageComponent = ({
 export const ContentComponent = ({
     children,
     collapsed,
-    adminControls
 }) => {
     return(
         <div className={collapsed ? 'Entry_contentCollapseContainer': null}>
             <div className='Entry_content'>
                 {domToReact(children[0].data)}
             </div>
-            {adminControls}
         </div>
     )
 }
