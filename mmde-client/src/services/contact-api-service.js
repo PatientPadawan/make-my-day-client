@@ -1,6 +1,6 @@
 import config from '../config';
 
-ContactApiService = {
+const ContactApiService = {
     async postContactForm(contactInfo, token) {
         const res = await fetch(`${config.API_BASE_URL}/contact`, {
             method: 'POST',
@@ -16,4 +16,4 @@ ContactApiService = {
     },
 }
 
-export default 
+export default ContactApiService
