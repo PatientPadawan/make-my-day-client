@@ -63,7 +63,7 @@ export default class ContactForm extends Component {
         const emailError = this.validateEmail();
         return(
             <>
-                <h3>Contact Us</h3>
+                <h3>Get in touch</h3>
                 <form>
                     <ul className='ContactForm_list'>
                         <li>

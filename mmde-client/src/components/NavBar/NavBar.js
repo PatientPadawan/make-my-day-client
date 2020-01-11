@@ -52,14 +52,14 @@ export default withAuth(class NavBar extends Component {
         null ;
     
         return(
-            <header className='App_header'>
+            <div className='App_header'>
                 <nav role='navigation'>
                     <h3 id='Nav_logo'>
                         <FontAwesomeIcon
                             size='1x'
                             icon='grin-alt'
                             className='Nav_linkIcons'
-                        />
+                        /> MMDE
                     </h3>
                     <div className='Nav_linksContainer'>
                         {adminLink}
@@ -86,8 +86,8 @@ export default withAuth(class NavBar extends Component {
                         </Link>
                         {logoutLink}
                     </div>
-            </nav>
-        </header>
+                </nav>
+            </div>    
         )
     }
 })

@@ -1,13 +1,14 @@
 .Section_links {
     text-decoration: none;
     padding: 0.08em 0.24em;
-    color: #fafafa;
-    background: #875a59;
-    border: 1px solid #b9cecc;
+    color: #4A415C;
+    background: #E1E1E1;
+    border: 1px solid #4A415C;
 }
 
 a.Section_links:hover{
-	background: #9E607C;
+    background: #4A415C;
+    color: #E1E1E1;
 }
 
 .Landing_headers {

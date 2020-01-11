@@ -1,12 +1,12 @@
 .App_header {
     padding: 1% 0;
-    background-color: #345268;
+    background-color: #39265C;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 10;
-    border-bottom: solid 1px #F2F2F2;
+    border-bottom: solid 1px #E1E1E1;
 }
 
 section {
@@ -15,9 +15,13 @@ section {
 }
 
 section:first-of-type {
-    margin-top: 4em;
+    margin-top: 3em;
 }
 
 section:nth-child(even) {
-    background-color: #7C8E9B;
+    background-color: #895BDC;
+}
+
+section:nth-child(odd) {
+    background-color: #6845A8;
 }

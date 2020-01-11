@@ -32,7 +32,7 @@ select{
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	border:1px solid #BEBEBE;
+	border:1px solid #E1E1E1;
 	padding: 7px;
 	margin:0px;
 	-webkit-transition: all 0.30s ease-in-out;
@@ -70,10 +70,10 @@ select{
 	height: 100px;
 }
 .ContactForm_list input[type=submit], .ContactForm_list input[type=button]{
-	background: #875a59;
+	background: #E1E1E1;
 	padding: 8px 15px 8px 15px;
 	border: none;
-	color: #fafafa;
+	color: #895BDC;
 }
 .ContactForm_list input[type=submit]:hover, .ContactForm_list input[type=button]:hover{
 	background: #9E607C;
