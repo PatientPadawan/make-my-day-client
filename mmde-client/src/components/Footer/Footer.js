@@ -19,8 +19,8 @@ export default function Footer() {
           icon='copyright'
           className='Footer_icons'            
         />
-        <p id="Footer_copyright">2019 Make My Day Entertainment, LLC. <br /> All rights reserved</p>
-        <p>Site by Patient Padawan</p>
+        <p className="Footer_text">2019 Make My Day Entertainment, LLC. <br /> All rights reserved</p>
+        <p className="Footer_text_2">Site by Patient Padawan</p>
       </>  
     )
 }

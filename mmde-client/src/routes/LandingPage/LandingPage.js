@@ -9,31 +9,44 @@ export default function LandingPage() {
         <>
             <NavBar />
             <Hero />
-            <section id='Landing_firstSection'>
-                <h3 className='Landing_headers'>Experience Exquisite Events</h3>
-                <p className='Landing_content'>We believe in moments that create lasting memories and impressions. We also understand managing the production can be a hassle. Let us handle behind the scenes work while you revel in your moment.</p>
-                <Link className='Section_links' to={'/contact'}>
-                    Make my day
-                </Link>
+            <section className='Landing_underline Landing_underlineCenter' id='Landing_firstSection'>
+                <h3 className='Landing_headers'>WHO WE ARE</h3>
+                <h4 className='Landing_headers Landing_minorHeaders'>Oklahoma's Premium Event Specialists</h4>
+                <p className='Landing_content'>Make My Day is changing the way people party! Founded by industry visionary Austin McBride, MMD takes pride in our attention to detail, incomparable customer service and over the top passion for what we do! Whether its fog machines, top of the line DJ equipment, photo booths or flat screen TV's, we have thought of everything to make your next event one that your guests will never forget!</p>
+                <div className='link_Container'>   
+                    <Link className='Section_links' to={'/contact'}>
+                        MAKE MY DAY
+                    </Link>
+                </div>
             </section>
-            <section>
-                <h3 className='Landing_headers'>Weddings. Festivals. Live performances. Corporate events. Private parties.</h3>
-                <p className='Landing_content'>We provide production design services, including lighting, sound, staging, as well as party planning and decorating. Let our professional artisans and technicians make your next event one not to forget.</p>
+            <section className='Landing_underline Landing_underlineCenter'>
+                <h3 className='Landing_headers'>WEDDINGS</h3>
+                <h4 className='Landing_headers Landing_minorHeaders'>No Detail Overlooked</h4>
+                <p className='Landing_content Landing_spaceFix'>Your wedding day is one you will always remember and we are honored to help make it unforgettable! Make My Day offers a unique, custom wedding experience and our meticulous attention to detail ensures that your big day will go off without a hitch!</p>
             </section>
-            <section>
-                <h3 className='Landing_headers'>Party With Us</h3>
+            <section className='Landing_underline Landing_underlineCenter'>
+                <h3 className='Landing_headers'>INDUSTRY AND MARQUEE</h3>
+                <h4 className='Landing_headers Landing_minorHeaders'>Make Your Event The Talk Of The Town</h4>
+                <p className='Landing_content Landing_spaceFix'>Whether it be a corporate event or a massive music festival, we have the equipment to make it happen! Fog machines, confetti launchers, laser light shows, photobooths, bubble machines and karaoke are just a few of the ways we can create the atmosphere you desire. With one of our world class DJ's keeping the dance floor full and the party bumping, we are guaranteed to make your day!</p>
+            </section>
+            <section className='Landing_underline Landing_underlineCenter'>
+                <h3 className='Landing_headers Landing_noMinorHeaders'>PARTY WITH US</h3>
                 <p className='Landing_content'>Check out a history of the events we've been a part of. Browse pictures and stories. From formal to fun it's all about making it your day!</p>
-                <Link className='Section_links' to={'/our-work'}>
-                    See our work
-                </Link>
+                <div className='link_Container'> 
+                    <Link className='Section_links' to={'/our-work'}>
+                        SEE OUR WORK
+                    </Link>
+                </div>
             </section>
             <section>
-                <h3 className='Landing_headers'>Have an upcoming event?</h3>
+                <h3 className='Landing_headers Landing_noMinorHeaders'>HAVE AN UPCOMING EVENT?</h3>
                 <p className='Landing_content'>Located in Oklahoma City, we work on projects across the state. Our expert technicians and staff are all local and we support other local businesses in the area. It's one of our core values.</p>
-                <h4>Give us a call at <br/>(450) 867-5309 <br/>or contact us here.</h4>
-                <Link className='Section_links' to={'/contact'}>
-                    Contact us
-                </Link>
+                <h4 className='Landing_contactHeader'>Give us a call at <br/>(450) 867-5309 <br/>or contact us here.</h4>
+                <div className='link_Container'> 
+                    <Link className='Section_links' to={'/contact'}>
+                        CONTACT US
+                    </Link>
+                </div>
             </section>
         </>
     )

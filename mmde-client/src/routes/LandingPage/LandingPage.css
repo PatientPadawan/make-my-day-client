@@ -1,19 +1,35 @@
 .Section_links {
     text-decoration: none;
     padding: 0.08em 0.24em;
-    color: #4A415C;
-    background: #E1E1E1;
-    border: 1px solid #4A415C;
+    color: #D6377E;
+    background: #33242B;
+    border: 1px solid #D6377E;
 }
 
 a.Section_links:hover{
-    background: #4A415C;
-    color: #E1E1E1;
+    background: #E0E0E0;
+    color: #33242B;
 }
 
 .Landing_headers {
     width: 85%;
     margin: auto;
+}
+
+.Landing_minorHeaders {
+    font-style: italic;
+    font-size: smaller;
+    padding-bottom: 1em;
+}
+
+.Landing_noMinorHeaders {
+    padding-bottom: 1em;
+}
+
+.Landing_contactHeader {
+    width: 45%;
+    margin: auto;
+    margin-bottom: 1em;
 }
 
 .Landing_content {
@@ -24,4 +40,29 @@ a.Section_links:hover{
 
 #Landing_firstSection {
     margin-top: 0;
+}
+
+.Landing_underline {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Landing_underline:after {
+    border-bottom: 1px solid #999999;
+    content: '';
+    display: block;
+    width: 75%;
+}
+
+.Landing_underlineCenter:after {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.link_Container {
+    margin-bottom: 2em;
+}
+
+.Landing_spaceFix {
+    margin-bottom: 2em;
 }

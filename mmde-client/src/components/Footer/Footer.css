@@ -1,6 +1,6 @@
 footer {
     font-size: 12px;
-    background-color: #39265C;
+    background-color: #000000;
     border-top: solid 1px #E1E1E1
 }
 
@@ -9,7 +9,12 @@ footer {
     color: #E1E1E1
 }
 
-#Footer_copyright {
+.Footer_text {
     display: inline;
     padding-left: 0.4em;
+    color: #E1E1E1;
+}
+
+.Footer_text_2 {
+    color: #E1E1E1;
 }

@@ -55,11 +55,7 @@ export default withAuth(class NavBar extends Component {
             <div className='App_header'>
                 <nav role='navigation'>
                     <h3 id='Nav_logo'>
-                        <FontAwesomeIcon
-                            size='1x'
-                            icon='grin-alt'
-                            className='Nav_linkIcons'
-                        /> MMDE
+                        MMD
                     </h3>
                     <div className='Nav_linksContainer'>
                         {adminLink}

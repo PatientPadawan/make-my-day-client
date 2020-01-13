@@ -63,7 +63,7 @@ export default class ContactForm extends Component {
         const emailError = this.validateEmail();
         return(
             <>
-                <h3>Get in touch</h3>
+                <h3>GET IN TOUCH</h3>
                 <form>
                     <ul className='ContactForm_list'>
                         <li>
@@ -88,11 +88,12 @@ export default class ContactForm extends Component {
                             {this.state.email.touched && <ValidationError message={emailError}/>}
                         </li>
                         <li>
-                            <label>Subject </label>
+                            <label>Event Type </label>
                             <select name='field4' className='field-select' onChange={this.onSubjectChange.bind(this)}>
-                                <option value='Booking'>Booking</option>
-                                <option value='Partnership'>Partnership</option>
-                                <option value='General'>General</option>
+                                <option value='Wedding'>Wedding</option>
+                                <option value='Marquee'>Marquee</option>
+                                <option value='Private'>Private</option>
+                                <option value='Other'>Other</option>
                             </select>
                         </li>
                         <li>

@@ -97,7 +97,7 @@ export default class BlogEntry extends Component {
         const reactFromHtml = parse(cleanHtml, options)
 
         return(
-            <>
+            <div className='Landing_underline Landing_underlineCenter'>
                 {reactFromHtml}
                 <div className='Entry_dateContainer'>
                     <Moment 
@@ -110,7 +110,7 @@ export default class BlogEntry extends Component {
                 <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
                     {adminControls}
                 </div>
-            </>
+            </div>
         )
     }
 }
