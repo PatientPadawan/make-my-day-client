@@ -1,5 +1,4 @@
 import React from 'react'
-import domToReact from 'html-react-parser';
 
 export const H1Component = ({
     children,
