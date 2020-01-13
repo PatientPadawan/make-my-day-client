@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import dompurify from 'dompurify';
-import parse from 'html-react-parser';
+import parse, { domToReact } from 'html-react-parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AdminControls from '../AdminControls/AdminControls';
 import { H1Component, HeaderComponent, ImageComponent, ContentComponent } from '../HtmlComponents';
 import './BlogEntry.css';
-
 
 export default class BlogEntry extends Component {
     constructor(props) {
@@ -29,6 +28,7 @@ export default class BlogEntry extends Component {
     }
 
     optionsReplace({ name, children, attribs }) {
+        if (!name) return;
         const remainingHeaderTags = ['h2', 'h3', 'h4', 'h5', 'h6']
         const availableContentTags = ['a', 'p']
         // expand collapse icon logic
@@ -40,7 +40,7 @@ export default class BlogEntry extends Component {
             return( 
                 <H1Component
                     {...this.props}
-                    children={children}
+                    children={domToReact(children, this.optionsReplace)}
                     collapsed={this.state.collapsed}
                     toggleHiddenClass={this.toggleHiddenClass}
                     iconToRender={iconToRender}
@@ -52,7 +52,7 @@ export default class BlogEntry extends Component {
             return(
                 <HeaderComponent 
                     {...this.props}
-                    children={children}
+                    children={domToReact(children, this.optionsReplace)}
                     collapsed={this.state.collapsed}
                 />
             )
@@ -72,8 +72,9 @@ export default class BlogEntry extends Component {
             return(
                 <ContentComponent
                     {...this.props}
-                    children={children}
+                    children={domToReact(children, this.optionsReplace)} // REFACTOR OTHER TAGS
                     collapsed={this.state.collapsed}
+                    optionsReplace={this.optionsReplace}
                 />
             )
         }
@@ -83,12 +84,13 @@ export default class BlogEntry extends Component {
         const dateToFormat = this.props.entries.createdAt
 
         const adminControls = this.props.loggedIn ?
-        <AdminControls 
-            postId={this.props.entries.id} 
-            published={this.props.entries.published}
-            onDelete={() => this.onDelete()}
-        /> :
-        null;
+            <AdminControls 
+                postId={this.props.entries.id} 
+                published={this.props.entries.published}
+                onDelete={() => this.onDelete()}
+            /> :
+            null
+        ;
 
         const sanitizer = dompurify.sanitize
         const cleanHtml = sanitizer(this.props.entries.content)

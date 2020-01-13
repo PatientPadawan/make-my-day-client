@@ -36,10 +36,12 @@ export default class PostEditor extends Component {
                             'searchreplace visualblocks code fullscreen',
                             'insertdatetime media table paste code wordcount'
                         ],
-                        toolbar:
-                            'undo redo | formatselect | bullist numlist | removeformat'
-                        }
-                    }
+                        toolbar: [
+                            'undo redo | formatselect | ' +
+                            'bold italic backcolor | bullist numlist |' +
+                            'removeformat'
+                        ]
+                    }}
                     onEditorChange={this.handleEditorChange}
                 />
                 <button onClick={this.handleUpdatePost}>Update post</button>

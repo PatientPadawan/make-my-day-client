@@ -10,7 +10,7 @@ export const H1Component = ({
     return(
         <div className='Entry_titleContainer'>
             <h3 className='Entry_title'>
-                {domToReact(children[0].data)}
+                {children}
             </h3>
             <button onClick={toggleHiddenClass} className='Entry_button' aria-expanded={!collapsed}>
                 {iconToRender}
@@ -27,7 +27,7 @@ export const HeaderComponent = ({
     return(
         <div className={collapsed ? 'Entry_contentCollapseContainer': null}>
             <h4 className='Entry_content'>
-                {domToReact(children[0].data)}
+                {children}
             </h4>
             {adminControls}
         </div>
@@ -57,7 +57,7 @@ export const ContentComponent = ({
     return(
         <div className={collapsed ? 'Entry_contentCollapseContainer': null}>
             <div className='Entry_content'>
-                {domToReact(children[0].data)}
+               {children}
             </div>
         </div>
     )
