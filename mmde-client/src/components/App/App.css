@@ -30,3 +30,22 @@ section:nth-child(even) {
 section:nth-child(odd) {
     background-color: #E0E0E0;
 }
+
+/* iPads (portrait and landscape) ----------- */
+@media screen and (min-width : 768px) and (max-width : 1024px) {
+   section:first-of-type {
+       margin-top: 3.75em;
+   }
+}
+
+/* Desktops and laptops ----------- */
+@media screen  and (min-width : 1224px) {
+   section:first-of-type {
+       margin-top: 4.39em;
+   }
+}
+
+/* Large screens ----------- */
+@media screen  and (min-width : 1824px) {
+/* Styles */
+}

@@ -46,6 +46,7 @@ select{
 	-o-transition: all 0.30s ease-in-out;
 	outline: none;	
 }
+
 .ContactForm_list input[type=text]:focus, 
 .ContactForm_list input[type=date]:focus,
 .ContactForm_list input[type=datetime]:focus,
@@ -61,6 +62,7 @@ select{
 	box-shadow: 0 0 8px #D6377E;
 	border: 1px solid #D6377E;
 }
+
 .ContactForm_list .field-divided{
 	width: 49%;
 }
@@ -68,18 +70,39 @@ select{
 .ContactForm_list .field-long{
 	width: 100%;
 }
+
 .ContactForm_list .field-select{
 	width: 100%;
 }
+
 .ContactForm_list .field-textarea{
 	height: 100px;
 }
+
 .ContactForm_list input[type=submit], .ContactForm_list input[type=button]{
 	background: #E1E1E1;
 	padding: 8px 15px 8px 15px;
 	border: none;
 	color: #D6377E;
 }
+
 .ContactForm_list input[type=submit]:hover, .ContactForm_list input[type=button]:hover{
 	background: #D6377E;
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media screen and (min-width : 768px) and (max-width : 1024px) {
+   
+}
+
+/* Desktops and laptops ----------- */
+@media screen  and (min-width : 1224px) {
+    #ContactForm_header {
+		margin-right: 2em;
+	}
+}
+
+/* Large screens ----------- */
+@media screen  and (min-width : 1824px) {
+/* Styles */
 }

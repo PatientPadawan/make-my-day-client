@@ -64,3 +64,26 @@ a.Section_links:hover{
 .Landing_spaceFix {
     margin-bottom: 2em;
 }
+
+/* iPads (portrait and landscape) ----------- */
+@media screen and (min-width : 768px) and (max-width : 1024px) {
+    .Landing_content {
+        width: 75%;
+    }
+}
+
+/* Desktops and laptops ----------- */
+@media screen  and (min-width : 1224px) {
+    .Landing_content {
+        width: 50%;
+    }
+
+    .Landing_underline:after {
+        width: 50%;
+    }
+}
+
+/* Large screens ----------- */
+@media screen  and (min-width : 1824px) {
+/* Styles */
+}

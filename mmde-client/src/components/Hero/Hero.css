@@ -5,3 +5,19 @@ header {
 }
 
 
+@media screen and (min-width : 768px) and (max-width : 1024px) {
+    
+}
+
+/* Desktops and laptops ----------- */
+@media screen  and (min-width : 1224px) {
+    .image-gallery-slide img {
+        height: 50%;
+        width: 50%;
+    }
+}
+
+/* Large screens ----------- */
+@media screen  and (min-width : 1824px) {
+/* Styles */
+}
