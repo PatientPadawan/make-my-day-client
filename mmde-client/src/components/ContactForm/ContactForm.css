@@ -1,3 +1,8 @@
+#ContactForm_header {
+	margin: 0;
+	padding: 1em 0;
+}
+
 .ContactForm_list {
  margin: 0 auto;
  max-width: 400px;
@@ -51,10 +56,10 @@ select{
 .ContactForm_list input[type=email]:focus,
 .ContactForm_list textarea:focus, 
 .ContactForm_list select:focus{
-	-moz-box-shadow: 0 0 8px #875A59;
-	-webkit-box-shadow: 0 0 8px #875A59;
-	box-shadow: 0 0 8px #875A59;
-	border: 1px solid #875A59;
+	-moz-box-shadow: 0 0 8px #D6377E;
+	-webkit-box-shadow: 0 0 8px #D6377E;
+	box-shadow: 0 0 8px #D6377E;
+	border: 1px solid #D6377E;
 }
 .ContactForm_list .field-divided{
 	width: 49%;
@@ -73,8 +78,8 @@ select{
 	background: #E1E1E1;
 	padding: 8px 15px 8px 15px;
 	border: none;
-	color: #895BDC;
+	color: #D6377E;
 }
 .ContactForm_list input[type=submit]:hover, .ContactForm_list input[type=button]:hover{
-	background: #9E607C;
+	background: #D6377E;
 }

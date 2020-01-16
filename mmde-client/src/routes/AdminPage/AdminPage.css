@@ -2,8 +2,9 @@
 	margin: 0.5em;
 }
 
-#Admin_addPostSection {
-	border-bottom: solid 1px #000000;
+#Admin_addPostSection {	
+	background-color: #33242B;
+	color: #E0E0E0;
 }
 
 .Admin_addPost {

@@ -14,15 +14,12 @@ a.Section_links:hover{
 .Landing_headers {
     width: 85%;
     margin: auto;
+    padding: 1em 0;
 }
 
 .Landing_minorHeaders {
     font-style: italic;
     font-size: smaller;
-    padding-bottom: 1em;
-}
-
-.Landing_noMinorHeaders {
     padding-bottom: 1em;
 }
 
@@ -33,7 +30,7 @@ a.Section_links:hover{
 }
 
 .Landing_content {
-    width: 90%;
+    width: 87%;
     margin: auto;
     margin-bottom: 1em;
 }
@@ -51,7 +48,8 @@ a.Section_links:hover{
     border-bottom: 1px solid #999999;
     content: '';
     display: block;
-    width: 75%;
+    width: 80%;
+    margin-top: .75em;
 }
 
 .Landing_underlineCenter:after {

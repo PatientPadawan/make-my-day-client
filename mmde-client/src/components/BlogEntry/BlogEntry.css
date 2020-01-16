@@ -1,15 +1,14 @@
 .Entry_images {
-    border: 1px solid #E1E1E1;
     border-radius: 4px;
     padding: 2px;
-    width: 14em;
+    width: 87%;
     margin-top: 1em;
 }
 
 .Entry_title {
     display: inline;
-    margin: 0.5em 0 0 0;
-    padding-left: 1.6em;
+    margin: auto;
+    padding: 1em 0 0 2em;
 }
 
 .Entry_titleContainer {
@@ -19,8 +18,7 @@
 }
 
 .Entry_icons {
-    margin-top: 0.55em;
-    margin-right: 0.85em;
+    margin: 1em 0.85em 0 0;
 }
 
 .Entry_button {
@@ -32,8 +30,7 @@
 }
 
 .Entry_dateContainer {
-    text-align: left;
-    padding-left: 1.9em;
+    text-align: center;
 }
 
 .Entry_date {
@@ -41,10 +38,10 @@
 }
 
 .Entry_content {
-    width: 80%;
+    width: 87%;
     margin: auto;
-    text-align: left;
-    padding-bottom: 1em;
+    text-align: center;
+    font-size: medium;
 }
 
 .Entry_contentCollapseContainer {
