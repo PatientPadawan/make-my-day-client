@@ -4,7 +4,6 @@ import './Hero.css'
 
 export default class Hero extends Component {
     render() {
-
         const images = [
             {
                 original: 'https://i.imgur.com/jabsphK.jpg',
