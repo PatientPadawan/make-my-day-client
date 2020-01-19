@@ -1,9 +1,13 @@
-# Make My Day Events website / blog
+# Make My Day Events Blog
 
-This project was created for Make My Day Events LLC and 
-allows administrators to update the site with 
+This project was created for Make My Day Events LLC 
+
+and allows administrators to update the site with 
+
 custom content. This is achieved through a WYSIWYG
+
 editor that outputs a html string which is in turn 
+
 converted to custom React elements. 
 
 ## Links
