@@ -90,19 +90,23 @@ select{
 	background: #D6377E;
 }
 
-/* iPads (portrait and landscape) ----------- */
-@media screen and (min-width : 768px) and (max-width : 1024px) {
-   
+/* Tablets ----------- */
+@media screen and (min-width : 768px) {
+	#ContactForm_header {
+		margin-right: 0.75em;
+	}
 }
 
 /* Desktops and laptops ----------- */
-@media screen  and (min-width : 1224px) {
+@media screen  and (min-width : 1024px) {
     #ContactForm_header {
-		margin-right: 2em;
+		margin-right: 1.25em;
 	}
 }
 
 /* Large screens ----------- */
-@media screen  and (min-width : 1824px) {
-/* Styles */
+@media screen  and (min-width : 1440px) {
+	#ContactForm_header {
+		margin-right: 1.95em;
+	}
 }
