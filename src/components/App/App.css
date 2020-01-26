@@ -12,6 +12,7 @@
 section {
     min-height: 4em;
     padding: 0;
+    background-color: #E0E0E0;
 }
 
 section:first-of-type {
@@ -21,14 +22,6 @@ section:first-of-type {
 
 section:last-of-type {
     padding: 0 0 6% 0;
-}
-
-section:nth-child(even) {
-    background-color: #E0E0E0;
-}
-
-section:nth-child(odd) {
-    background-color: #E0E0E0;
 }
 
 /* iPads (portrait and landscape) ----------- */

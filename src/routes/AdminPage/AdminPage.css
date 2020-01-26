@@ -5,10 +5,11 @@
 #Admin_addPostSection {	
 	background-color: #33242B;
 	color: #E0E0E0;
+	padding: 0%;
 }
 
 .Admin_addPost {
-    margin-top: 1.3em;
+    margin-top: 5.3em;
     background: none;
 	color: inherit;
 	border: none;

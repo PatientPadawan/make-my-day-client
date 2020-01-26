@@ -1,0 +1,22 @@
+.Loader_ {
+    background-color: #E0E0E0;
+    color: #000000;
+    min-height: 25em;
+    margin-top: 3.23em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rotate {
+    animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}

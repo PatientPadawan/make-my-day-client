@@ -54,10 +54,12 @@ export default withAuth(class BlogList extends Component {
                 }
         });
 
+        // conditionally rendering bloglist if load screen active
+        const hideIfLoading = this.props.hidden ? "Blog_hidden" : null ;
         return(
-            <>
+            <div className={hideIfLoading}>
                 {blogList}
-            </>
+            </div>
         )
     }
 })
