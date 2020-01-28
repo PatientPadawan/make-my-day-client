@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
@@ -11,62 +11,60 @@ import SignInPage from '../../routes/SignInPage/SignInPage';
 import Footer from '../Footer/Footer';
 import './App.css';
 
-function onAuthRequired({history}) {
+function onAuthRequired({ history }) {
   history.push('/login');
 }
 
 const oktaConfig = {
-  issuer:`https://${process.env.REACT_APP_OKTA_DOMAIN}/oauth2/default`,
+  issuer: `https://${process.env.REACT_APP_OKTA_DOMAIN}/oauth2/default`,
   clientId: `${process.env.REACT_APP_OKTA_ID}`,
-  redirectUri: window.location.origin + '/implicit/callback',
-  onAuthRequired: onAuthRequired,
+  redirectUri: `${window.location.origin}/implicit/callback`,
+  onAuthRequired,
   pkce: true,
-}
+};
 
-export default class App extends Component {
-  render() {
-    return(
-      <div className='App'>
-        <main role='main' className='App_main'>
-          <Router>
-            <Security {...oktaConfig}>
-              <ScrollToTop />
-              <Route
-                exact
-                path={'/'}
-                component={LandingPage}
-              />
-              <SecureRoute
-                path={'/admin'}
-                component={AdminPage}
-              />
-              <Route
-                path={'/our-work'}
-                component={EventsBlog}
-              />
-              <Route 
-                path={'/contact'}
-                component={ContactPage}
-              />
-              <Route
-                path={`/edit/:postId`}
-                component={EditPage}
-              />
-              <Route
-                path={`/login`}
-                render={() => <section><SignInPage baseUrl={`https://${process.env.REACT_APP_OKTA_DOMAIN}`}/></section>}
-              />
-              <Route 
-                path={`/implicit/callback`}
-                component={ImplicitCallback}
-              />
-              </Security>
-          </Router>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div className="App">
+      <main role="main" className="App_main">
+        <Router>
+          <Security {...oktaConfig}>
+            <ScrollToTop />
+            <Route
+              exact
+              path="/"
+              component={LandingPage}
+            />
+            <SecureRoute
+              path="/admin"
+              component={AdminPage}
+            />
+            <Route
+              path="/our-work"
+              component={EventsBlog}
+            />
+            <Route
+              path="/contact"
+              component={ContactPage}
+            />
+            <Route
+              path="/edit/:postId"
+              component={EditPage}
+            />
+            <Route
+              path="/login"
+              render={() => <section><SignInPage baseUrl={`https://${process.env.REACT_APP_OKTA_DOMAIN}`} /></section>}
+            />
+            <Route
+              path="/implicit/callback"
+              component={ImplicitCallback}
+            />
+          </Security>
+        </Router>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  );
 }

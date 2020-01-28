@@ -1,65 +1,67 @@
 import React, { Component } from 'react';
-import BlogEntry from '../BlogEntry/BlogEntry';
 import { withAuth } from '@okta/okta-react';
+import BlogEntry from '../BlogEntry/BlogEntry';
 import './BlogList.css';
 
 export default withAuth(class BlogList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { authenticated: null };
-    }
+  constructor(props) {
+    super(props);
+    this.state = { authenticated: null };
+  }
 
-    async checkAuthentication() {
-        const authenticated = await this.props.auth.isAuthenticated();
-        if (authenticated !== this.state.authenticated) {
-            this.setState({ authenticated });
+  async componentDidMount() {
+    this.checkAuthentication();
+  }
+
+  async componentDidUpdate() {
+    this.checkAuthentication();
+  }
+
+  async checkAuthentication() {
+    const { auth } = this.props;
+    const { authenticated } = this.state;
+    const isAuthorized = await auth.isAuthenticated();
+    if (isAuthorized !== authenticated) {
+      this.setState({ authenticated: isAuthorized });
+    }
+  }
+
+  render() {
+    const blogList = [];
+    const { authenticated } = this.state;
+    const { entries } = this.props;
+
+    // conditionally rendering unpublished blog posts
+    // for authorized admin users
+    authenticated ? entries.forEach((_entry, i) => {
+      blogList.push(
+        <section key={`Blogpost ${entries[i].id}`}>
+          <BlogEntry
+            entries={entries[i]}
+            loggedIn={authenticated}
+          />
+        </section>,
+      );
+    }) // if not logged in
+      : entries.forEach((_entry, i) => {
+        if (entries[i].published === true) {
+          blogList.push(
+            <section key={`Blogpost ${entries[i].id}`}>
+              <BlogEntry
+                entries={entries[i]}
+                loggedIn={authenticated}
+              />
+            </section>,
+          );
+        } else {
+          return null;
         }
-    }
+      });
 
-    async componentDidMount() {
-        this.checkAuthentication();
-    }
-
-    async componentDidUpdate() {
-        this.checkAuthentication();
-    }
-
-    render() {
-        const blogList = [];
-        
-        // conditionally rendering unpublished blog posts for admin users
-        this.state.authenticated ? // if logged in
-            this.props.entries.forEach((entry, i) => {
-                blogList.push(
-                    <section key={i}>
-                        <BlogEntry  
-                            entries={this.props.entries[i]} 
-                            loggedIn={this.state.authenticated}
-                        />
-                    </section>
-                )
-            }) :                  // if not logged in
-            this.props.entries.forEach((entry, i) => {
-                if (this.props.entries[i].published === true) {
-                    blogList.push(
-                        <section key={i}>
-                            <BlogEntry 
-                                entries={this.props.entries[i]} 
-                                loggedIn={this.state.authenticated}
-                            />
-                        </section>
-                    )
-                } else {
-                    return null;
-                }
-        });
-
-        // conditionally rendering bloglist if load screen active
-        const hideIfLoading = this.props.hidden ? "Blog_hidden" : null ;
-        return(
-            <div className={hideIfLoading}>
-                {blogList}
-            </div>
-        )
-    }
-})
+    return (
+      <div>
+        {blogList}
+      </div>
+    );
+  }
+});

@@ -4,12 +4,12 @@ import NavBar from '../../components/NavBar/NavBar';
 import './ContactPage.css';
 
 export default function ContactPage() {
-    return(
-        <>
-            <NavBar />
-           <section> 
-               <ContactForm />
-            </section>
-        </>
-    )
+  return (
+    <>
+      <NavBar />
+      <section>
+        <ContactForm />
+      </section>
+    </>
+  );
 }

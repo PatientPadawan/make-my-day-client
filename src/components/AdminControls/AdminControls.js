@@ -4,30 +4,35 @@ import BlogContext from '../../contexts/BlogContext';
 import './AdminControls.css';
 
 export default class AdminControls extends Component {
-    static contextType = BlogContext
+  static contextType = BlogContext
 
-    render() {
-        const publishState = (this.props.published) ? 'Unpublish' : 'Publish'
-        const editLink = `/edit/${this.props.postId}`
-        return(
-            <>
-                <button 
-                    onClick={() => this.context.pubPost(this.props.postId, this.context.accessToken)}
-                >
-                    {publishState}
-                </button>
-                <button 
-                    onClick={() => {
-                        if (window.confirm('Delete the item?')) {
-                            this.props.onDelete()
-                            this.context.delPost(this.props.postId, this.context.accessToken)
-                        }
-                    }}
-                >
-                    Delete
-                </button>
-                <Link to={editLink}><button>Edit</button></Link>
-            </>
-        )
-    }
+  render() {
+    const { published, postId, onDelete } = this.props;
+    const { accessToken, pubPost, delPost } = this.context;
+
+    return (
+      <>
+        <button
+          onClick={() => pubPost(postId, accessToken)}
+          type="button"
+        >
+          { published ? 'Unpublish' : 'Publish' }
+        </button>
+        <button
+          onClick={() => {
+            if (window.confirm('Delete the item?')) {
+              onDelete();
+              delPost(postId, accessToken);
+            }
+          }}
+          type="button"
+        >
+          Delete
+        </button>
+        <Link to={`/edit/${postId}`}>
+          <button type="button">Edit</button>
+        </Link>
+      </>
+    );
+  }
 }

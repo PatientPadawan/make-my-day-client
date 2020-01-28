@@ -4,115 +4,125 @@ import dompurify from 'dompurify';
 import parse, { domToReact } from 'html-react-parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AdminControls from '../AdminControls/AdminControls';
-import { H1Component, HeaderComponent, ImageComponent, ContentComponent } from '../HtmlComponents';
+import {
+  H1Component, HeaderComponent, ImageComponent, ContentComponent,
+} from '../HtmlComponents';
 import './BlogEntry.css';
 
 export default class BlogEntry extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            collapsed: true,
-        };
-        this.onDelete = this.onDelete.bind(this);
-        this.toggleHiddenClass = this.toggleHiddenClass.bind(this);
-        this.optionsReplace = this.optionsReplace.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = {
+      collapsed: true,
+    };
+    this.onDelete = this.onDelete.bind(this);
+    this.toggleHiddenClass = this.toggleHiddenClass.bind(this);
+    this.optionsReplace = this.optionsReplace.bind(this);
+  }
+
+  onDelete() {
+    this.setState({ collapsed: true });
+  }
+
+  toggleHiddenClass() {
+    const { collapsed } = this.state;
+    this.setState({ collapsed: !collapsed });
+  }
+
+  // logic to create custom react elements from html string
+  optionsReplace({ name, children, attribs }) {
+    const remainingHeaderTags = ['h2', 'h3', 'h4', 'h5', 'h6'];
+    const availableContentTags = ['a', 'p'];
+    const { collapsed } = this.state;
+    const iconToRender = collapsed
+      ? <FontAwesomeIcon size="2x" icon="plus" className="Entry_icons" />
+      : <FontAwesomeIcon size="2x" icon="minus" className="Entry_icons" />;
+
+    if (name === 'h1') {
+      return (
+        <H1Component
+          {...this.props}
+          children={domToReact(children, this.optionsReplace)}
+          collapsed={collapsed}
+          toggleHiddenClass={this.toggleHiddenClass}
+          iconToRender={iconToRender}
+        />
+      );
     }
 
-    onDelete() {
-        this.setState({ collapsed: true })
+    if (remainingHeaderTags.includes(name)) {
+      return (
+        <HeaderComponent
+          {...this.props}
+          children={domToReact(children, this.optionsReplace)}
+          collapsed={collapsed}
+        />
+      );
     }
 
-    toggleHiddenClass() {
-        const currentCollapseState = this.state.collapsed;
-        this.setState({ collapsed: !currentCollapseState });
+    if (name === 'img') {
+      return (
+        <ImageComponent
+          {...this.props}
+          attribs={attribs}
+          collapsed={collapsed}
+        />
+      );
     }
 
-    optionsReplace({ name, children, attribs }) {
-        if (!name) return;
-        const remainingHeaderTags = ['h2', 'h3', 'h4', 'h5', 'h6']
-        const availableContentTags = ['a', 'p']
-        // expand collapse icon logic
-        const iconToRender = this.state.collapsed ?
-        <FontAwesomeIcon size='2x' icon='plus' className='Entry_icons'/> :
-        <FontAwesomeIcon size='2x' icon='minus' className='Entry_icons'/> ;
-
-        if(name === 'h1') {
-            return( 
-                <H1Component
-                    {...this.props}
-                    children={domToReact(children, this.optionsReplace)}
-                    collapsed={this.state.collapsed}
-                    toggleHiddenClass={this.toggleHiddenClass}
-                    iconToRender={iconToRender}
-                />
-            )
-        }
-
-        if (remainingHeaderTags.includes(name)) {
-            return(
-                <HeaderComponent 
-                    {...this.props}
-                    children={domToReact(children, this.optionsReplace)}
-                    collapsed={this.state.collapsed}
-                />
-            )
-        }
-        
-        if (name === 'img') {
-            return(
-                <ImageComponent
-                    {...this.props}
-                    attribs={attribs}
-                    collapsed={this.state.collapsed}
-                />
-            )
-        }
-
-        if (availableContentTags.includes(name)) {
-            return(
-                <ContentComponent
-                    {...this.props}
-                    children={domToReact(children, this.optionsReplace)} // REFACTOR OTHER TAGS
-                    collapsed={this.state.collapsed}
-                    optionsReplace={this.optionsReplace}
-                />
-            )
-        }
+    if (availableContentTags.includes(name)) {
+      return (
+        <ContentComponent
+          {...this.props}
+          children={domToReact(children, this.optionsReplace)}
+          collapsed={collapsed}
+          optionsReplace={this.optionsReplace}
+        />
+      );
     }
-    
-    render() {
-        const dateToFormat = this.props.entries.createdAt
+    return null;
+  }
 
-        const adminControls = this.props.loggedIn ?
-            <AdminControls 
-                postId={this.props.entries.id} 
-                published={this.props.entries.published}
-                onDelete={() => this.onDelete()}
-            /> :
-            null
-        ;
+  render() {
+    const { collapsed } = this.state;
+    const { loggedIn, entries } = this.props;
+    const {
+      id,
+      content,
+      createdAt,
+      published,
+    } = entries;
 
-        const sanitizer = dompurify.sanitize
-        const cleanHtml = sanitizer(this.props.entries.content)
-        // html ---> react parser logic
-        const options = { replace: this.optionsReplace }
-        const reactFromHtml = parse(cleanHtml, options)
+    const adminControls = loggedIn
+      ? (
+        <AdminControls
+          postId={id}
+          published={published}
+          onDelete={() => this.onDelete()}
+        />
+      )
+      : null;
+    const sanitizer = dompurify.sanitize;
+    const cleanHtml = sanitizer(content);
+    // attach our custom html ---> react parser logic
+    const options = { replace: this.optionsReplace };
+    const reactFromHtml = parse(cleanHtml, options);
 
-        return(
-            <div className='Landing_underline Landing_underlineCenter'>
-                {reactFromHtml}
-                <div className='Entry_dateContainer'>
-                    <Moment 
-                        className={this.state.collapsed ? 'Entry_date': 'Entry_contentCollapseContainer'} 
-                        format='MMMM Do, YYYY'
-                    >
-                        {dateToFormat}
-                    </Moment>
-                </div>
-                <div className={this.state.collapsed ? 'Entry_contentCollapseContainer': null}>
-                    {adminControls}
-                </div>
-            </div>
-        )
-    }
+    return (
+      <div className="Landing_underline Landing_underlineCenter">
+        {reactFromHtml}
+        <div className="Entry_dateContainer">
+          <Moment
+            className={collapsed ? 'Entry_date' : 'Entry_contentCollapseContainer'}
+            format="MMMM Do, YYYY"
+          >
+            {createdAt}
+          </Moment>
+        </div>
+        <div className={collapsed ? 'Entry_contentCollapseContainer' : null}>
+          {adminControls}
+        </div>
+      </div>
+    );
+  }
 }

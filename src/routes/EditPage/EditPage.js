@@ -9,17 +9,19 @@ import './EditPage.css';
 
 export default class EditPage extends Component {
     static contextType = BlogContext
-  
+
     render() {
-        const postToEdit = BlogApiService.getBlogById(this.props.match.params.postId, this.context.blogPosts);
-        return(
-            <>
-                <NavBar />
-                <section>
-                    <BlogEntry entries={postToEdit} />
-                    <PostEditor postToEdit={postToEdit} />
-                </section>
-            </>
-        )
+      const { match } = this.props;
+      const { blogPosts } = this.context;
+      const postToEdit = BlogApiService.getBlogById(match.params.postId, blogPosts);
+      return (
+        <>
+          <NavBar />
+          <section>
+            <BlogEntry entries={postToEdit} />
+            <PostEditor postToEdit={postToEdit} />
+          </section>
+        </>
+      );
     }
 }

@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import OktaSignIn from '@okta/okta-signin-widget/dist/js/okta-sign-in.min';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 export default class OktaSignInWidget extends Component {
-    componentDidMount() {
-        const el = ReactDOM.findDOMNode(this);
-        this.widget = new OktaSignIn({
-            features: {
-                registration: false,
-            },
-            baseUrl: this.props.baseUrl,
-            authParams: {
-                pkce: true
-            }
-        });
-        this.widget.renderEl({el}, this.props.onSuccess, this.props.onError);
-    }
+  componentDidMount() {
+    const el = this.node;
+    const { baseUrl, onSuccess, onError } = this.props;
+    this.widget = new OktaSignIn({
+      features: {
+        registration: false,
+      },
+      baseUrl,
+      authParams: {
+        pkce: true,
+      },
+    });
+    this.widget.renderEl({ el }, onSuccess, onError);
+  }
 
-    componentWillUnmount() {
-        this.widget.remove();
-    }
+  componentWillUnmount() {
+    this.widget.remove();
+  }
 
-    render() {
-        return <div />;
-    }
-};
+  render() {
+    return <div ref={(node) => { this.node = node; }} />;
+  }
+}

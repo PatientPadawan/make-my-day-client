@@ -1,59 +1,63 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import OktaSignInWidget from '../../components/OktaSignInWidget/OktaSignInWidget';
 import { withAuth } from '@okta/okta-react';
+import OktaSignInWidget from '../../components/OktaSignInWidget/OktaSignInWidget';
 import NavBar from '../../components/NavBar/NavBar';
 
+const onError = (err) => {
+  console.log('error logging in', err);
+};
+
 export default withAuth(class SignInPage extends Component {
-    constructor(props) {
-        super(props);
-        this.onSuccess = this.onSuccess.bind(this);
-        this.onError = this.onError.bind(this);
-        this.state = {
-            authenticated: null
-        };
-        this.checkAuthentication();
-    }
+  constructor(props) {
+    super(props);
+    this.onSuccess = this.onSuccess.bind(this);
+    this.state = {
+      authenticated: null,
+    };
+    this.checkAuthentication();
+  }
 
-    async checkAuthentication() {
-        const authenticated = await this.props.auth.isAuthenticated();
-        if (authenticated !== this.state.authenticated) {
-            this.setState({ authenticated });
-        }
-    }
+  componentDidUpdate() {
+    this.checkAuthentication();
+  }
 
-    componentDidUpdate() {
-        this.checkAuthentication();
+  onSuccess(res) {
+    const { auth } = this.props;
+    if (res.status === 'SUCCESS') {
+      return auth.redirect({
+        sessionToken: res.session.token,
+      });
     }
+    return null;
+  }
 
-    onSuccess(res) {
-        if (res.status === 'SUCCESS') {
-            return this.props.auth.redirect({
-                sessionToken: res.session.token
-            });
-        } else {
-        // The user can be in another authentication state that requires further action.
-        // For more information about these states, see:
-        //   https://github.com/okta/okta-signin-widget#rendereloptions-success-error
-        }
+  async checkAuthentication() {
+    const { auth } = this.props;
+    const { authenticated } = this.state;
+    const isAuthorized = await auth.isAuthenticated();
+    if (isAuthorized !== authenticated) {
+      this.setState({ authenticated: isAuthorized });
     }
+  }
 
-    onError(err) {
-        console.log('error logging in', err);
-    }
-
-    render() {
-        if (this.state.authenticated === null) return null;
-        return( 
-            <>
-                <NavBar />
-                
-                {this.state.authenticated ?
-                <Redirect to={{ pathname: '/' }}/> :
-                <OktaSignInWidget
-                baseUrl={this.props.baseUrl}
-                onSuccess={this.onSuccess}
-                onError={this.onError}/>}
-            </>
-        )}
+  render() {
+    const { authenticated } = this.state;
+    const { baseUrl } = this.props;
+    if (authenticated === null) return null;
+    return (
+      <>
+        <NavBar />
+        {authenticated
+          ? <Redirect to={{ pathname: '/' }} />
+          : (
+            <OktaSignInWidget
+              baseUrl={baseUrl}
+              onSuccess={this.onSuccess}
+              onError={onError}
+            />
+          )}
+      </>
+    );
+  }
 });
