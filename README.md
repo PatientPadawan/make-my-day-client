@@ -1,4 +1,4 @@
-# Make My Day Events Blog
+# Make My Day Events Blog Client
 
 This project was created for Make My Day Events LLC and allows administrators to update the site with 
 
