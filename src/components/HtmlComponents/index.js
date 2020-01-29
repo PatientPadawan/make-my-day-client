@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 export const H1Component = ({
   children,
@@ -53,3 +54,39 @@ export const ContentComponent = ({
     </div>
   </div>
 );
+
+H1Component.propTypes = {
+  children: propTypes.string.isRequired,
+  collapsed: propTypes.bool.isRequired,
+  toggleHiddenClass: propTypes.func.isRequired,
+  iconToRender: propTypes.shape({
+    $$typeof: propTypes.symbol,
+    props: propTypes.object,
+  }).isRequired,
+};
+
+HeaderComponent.propTypes = {
+  children: propTypes.string.isRequired,
+  collapsed: propTypes.bool.isRequired,
+  adminControls: propTypes.shape({
+    $$typeof: propTypes.symbol,
+    props: propTypes.object,
+  }).isRequired,
+};
+
+ImageComponent.propTypes = {
+  attribs: propTypes.shape({
+    width: propTypes.string,
+    alt: propTypes.string,
+    src: propTypes.string,
+  }).isRequired,
+  collapsed: propTypes.bool.isRequired,
+};
+
+ContentComponent.propTypes = {
+  children: propTypes.oneOfType([
+    propTypes.string,
+    propTypes.array,
+  ]).isRequired,
+  collapsed: propTypes.bool.isRequired,
+};

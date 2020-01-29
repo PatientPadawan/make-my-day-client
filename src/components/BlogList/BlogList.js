@@ -1,9 +1,33 @@
 import React, { Component } from 'react';
 import { withAuth } from '@okta/okta-react';
+import propTypes from 'prop-types';
 import BlogEntry from '../BlogEntry/BlogEntry';
 import './BlogList.css';
 
 export default withAuth(class BlogList extends Component {
+  static propTypes = {
+    auth: propTypes.shape({
+      oktaAuth: propTypes.object,
+      config: propTypes.object,
+      history: propTypes.object,
+      handleAuthentication: propTypes.func,
+      isAuthenticated: propTypes.func,
+      getUser: propTypes.func,
+      getIdToken: propTypes.func,
+      getAccessToken: propTypes.func,
+      login: propTypes.func,
+      logout: propTypes.func,
+      redirect: propTypes.func,
+    }).isRequired,
+    entries: propTypes.arrayOf(propTypes.shape({
+      id: propTypes.number,
+      content: propTypes.string,
+      published: propTypes.bool,
+      createdAt: propTypes.string,
+      updatedAt: propTypes.string,
+    })).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = { authenticated: null };

@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 export default function ValidationError(props) {
   const { message } = props;
@@ -9,3 +10,11 @@ export default function ValidationError(props) {
   }
   return <></>;
 }
+
+ValidationError.propTypes = {
+  message: propTypes.string,
+};
+
+ValidationError.defaultProps = {
+  message: '',
+};

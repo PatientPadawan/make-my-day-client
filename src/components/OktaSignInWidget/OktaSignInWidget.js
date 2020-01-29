@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import OktaSignIn from '@okta/okta-signin-widget/dist/js/okta-sign-in.min';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
+import './OktaSignInWidget.css';
 
 export default class OktaSignInWidget extends Component {
   componentDidMount() {
@@ -23,6 +25,12 @@ export default class OktaSignInWidget extends Component {
   }
 
   render() {
-    return <div ref={(node) => { this.node = node; }} />;
+    return <div ref={(node) => { this.node = node; }} className="signInWidget" />;
   }
 }
+
+OktaSignInWidget.propTypes = {
+  baseUrl: propTypes.string.isRequired,
+  onSuccess: propTypes.func.isRequired,
+  onError: propTypes.func.isRequired,
+};

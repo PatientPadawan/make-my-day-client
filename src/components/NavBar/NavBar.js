@@ -2,10 +2,27 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '@okta/okta-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import propTypes from 'prop-types';
 import BlogContext from '../../contexts/BlogContext';
 import './NavBar.css';
 
 export default withAuth(class NavBar extends Component {
+  static propTypes = {
+    auth: propTypes.shape({
+      oktaAuth: propTypes.object,
+      config: propTypes.object,
+      history: propTypes.object,
+      handleAuthentication: propTypes.func,
+      isAuthenticated: propTypes.func,
+      getUser: propTypes.func,
+      getIdToken: propTypes.func,
+      getAccessToken: propTypes.func,
+      login: propTypes.func,
+      logout: propTypes.func,
+      redirect: propTypes.func,
+    }).isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.state = { authenticated: null };

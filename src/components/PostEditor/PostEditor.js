@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import propTypes from 'prop-types';
 import BlogContext from '../../contexts/BlogContext';
 import './PostEditor.css';
 
@@ -54,3 +55,13 @@ export default class PostEditor extends Component {
       );
     }
 }
+
+PostEditor.propTypes = {
+  postToEdit: propTypes.shape({
+    id: propTypes.number,
+    content: propTypes.string,
+    published: propTypes.bool,
+    createdAt: propTypes.string,
+    updatedAt: propTypes.string,
+  }).isRequired,
+};

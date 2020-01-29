@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 import dompurify from 'dompurify';
 import parse, { domToReact } from 'html-react-parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import propTypes from 'prop-types';
 import AdminControls from '../AdminControls/AdminControls';
 import {
   H1Component, HeaderComponent, ImageComponent, ContentComponent,
@@ -49,7 +50,6 @@ export default class BlogEntry extends Component {
         />
       );
     }
-
     if (remainingHeaderTags.includes(name)) {
       return (
         <HeaderComponent
@@ -59,7 +59,6 @@ export default class BlogEntry extends Component {
         />
       );
     }
-
     if (name === 'img') {
       return (
         <ImageComponent
@@ -69,7 +68,6 @@ export default class BlogEntry extends Component {
         />
       );
     }
-
     if (availableContentTags.includes(name)) {
       return (
         <ContentComponent
@@ -126,3 +124,18 @@ export default class BlogEntry extends Component {
     );
   }
 }
+
+BlogEntry.propTypes = {
+  loggedIn: propTypes.bool,
+  entries: propTypes.shape({
+    id: propTypes.number,
+    content: propTypes.string,
+    published: propTypes.bool,
+    createdAt: propTypes.string,
+    updatedAt: propTypes.string,
+  }).isRequired,
+};
+
+BlogEntry.defaultProps = {
+  loggedIn: false,
+};

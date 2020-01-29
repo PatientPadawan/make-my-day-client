@@ -1,0 +1,50 @@
+.signInWidget {
+  margin-top: 3.23em;
+  border-top: none;
+}
+
+#okta-sign-in.auth-container .okta-form-input-field input:focus {
+  -moz-box-shadow: 0 0 8px #D6377E;
+	-webkit-box-shadow: 0 0 8px #D6377E;
+  box-shadow: 0 0 8px #D6377E;
+  border: #D6377E;
+}
+
+#okta-sign-in.auth-container .button {
+  background: #D6377E;
+  border-color: #33242B;
+}
+
+#okta-sign-in.auth-container .button:focus, 
+#okta-sign-in.auth-container .button:hover,
+#okta-sign-in.auth-container .button:active,
+#okta-sign-in.auth-container .button:visited {
+  background: #D6377E;
+  border-color: #33242B;
+  -moz-box-shadow: 0 0 8px #D6377E;
+	-webkit-box-shadow: 0 0 8px #D6377E;
+  box-shadow: 0 0 8px #D6377E;
+}
+
+#okta-sign-in .o-form .custom-checkbox label {
+  display: none;
+}
+
+#okta-sign-in .auth-header {
+  display: none;
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media screen and (min-width : 768px) {
+  .signInWidget {
+    display: flex;
+    margin-top: 1.5em;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media screen  and (min-width : 1024px) {
+  .signInWidget {
+    margin-top: 2em;
+  }
+}

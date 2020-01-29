@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import BlogContext from '../../contexts/BlogContext';
 import './AdminControls.css';
@@ -36,3 +37,9 @@ export default class AdminControls extends Component {
     );
   }
 }
+
+AdminControls.propTypes = {
+  published: propTypes.bool.isRequired,
+  postId: propTypes.number.isRequired,
+  onDelete: propTypes.func.isRequired,
+};
