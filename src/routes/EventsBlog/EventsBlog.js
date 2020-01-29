@@ -40,7 +40,11 @@ export default class EventsBlog extends Component {
     return (
       <>
         <NavBar />
-        { loading ? <Loader /> : <BlogList entries={blogPosts} /> }
+        {
+          loading
+            ? <Loader />
+            : <div className="eventsBlog"><BlogList entries={blogPosts} /></div>
+        }
       </>
     );
   }

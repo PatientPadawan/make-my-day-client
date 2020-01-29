@@ -35,7 +35,7 @@ export default withAuth(class BlogList extends Component {
     // for authorized admin users
     authenticated ? entries.forEach((_entry, i) => {
       blogList.push(
-        <section key={`Blogpost ${entries[i].id}`}>
+        <section key={`Blogpost ${entries[i].id}`} className="blogList">
           <BlogEntry
             entries={entries[i]}
             loggedIn={authenticated}
@@ -46,7 +46,7 @@ export default withAuth(class BlogList extends Component {
       : entries.forEach((_entry, i) => {
         if (entries[i].published === true) {
           blogList.push(
-            <section key={`Blogpost ${entries[i].id}`}>
+            <section key={`Blogpost ${entries[i].id}`} className="blogList">
               <BlogEntry
                 entries={entries[i]}
                 loggedIn={authenticated}

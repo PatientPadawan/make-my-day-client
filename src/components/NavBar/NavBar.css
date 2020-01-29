@@ -4,7 +4,7 @@ Nav {
     background-color: #000000;
 }
 
-#Nav_logo {
+.Nav_logo {
     text-align: left;
     padding-left: 0.8em;
     display: inline;
@@ -32,4 +32,32 @@ Nav {
 	cursor: pointer;
     outline: inherit;
     margin-right: 0.8em;
+}
+
+.fullView {
+    display: none;
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media screen and (min-width : 768px) {
+   .fullView {
+       display: inherit;
+   }
+
+   .mobileView {
+       display: none;
+   }
+
+   .Nav_links {
+       margin-right: 1.2em;
+   }
+
+    .Nav_linkIcons {
+        font-size: x-large;
+    }
+}
+ 
+/* Desktops and laptops ----------- */
+@media screen  and (min-width : 1024px) {
+    
 }

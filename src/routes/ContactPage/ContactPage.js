@@ -7,7 +7,7 @@ export default function ContactPage() {
   return (
     <>
       <NavBar />
-      <section>
+      <section className="ContactPage_formSection">
         <ContactForm />
       </section>
     </>

@@ -11,7 +11,7 @@ export default class PostEditor extends Component {
     this.handleEditorChange = this.handleEditorChange.bind(this);
   }
 
-    handleUpdatePost = (e) => {
+    handleUpdatePost = () => {
       const { content } = this.state;
       const { postToEdit } = this.props;
       const { updateBlogPost, accessToken } = this.context;
@@ -43,8 +43,8 @@ export default class PostEditor extends Component {
               ],
               toolbar: [
                 'undo redo | formatselect | '
-                            + 'bold italic backcolor | bullist numlist |'
-                            + 'removeformat',
+                + 'bold italic backcolor | bullist numlist |'
+                + 'removeformat',
               ],
             }}
             onEditorChange={this.handleEditorChange}

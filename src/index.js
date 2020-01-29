@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
+  // eslint-disable-next-line max-len
   faUserCog, faHome, faSyncAlt, faSignInAlt, faSignOutAlt, faFileSignature, faImages, faPlusSquare, faCopyright, faPlus, faMinus, faGrinAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';

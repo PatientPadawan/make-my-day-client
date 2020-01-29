@@ -52,11 +52,7 @@ export default withAuth(class NavBar extends Component {
     const { authenticated } = this.state;
     const logoutLink = authenticated
       ? (
-        <button
-          className="Nav_linksButton"
-          onClick={this.logout}
-          type="button"
-        >
+        <button className="Nav_linksButton" onClick={this.logout} type="button">
           <FontAwesomeIcon size="1x" icon="sign-out-alt" className="Nav_linkIcons" />
         </button>
       )
@@ -64,10 +60,7 @@ export default withAuth(class NavBar extends Component {
 
     const adminLink = authenticated
       ? (
-        <Link
-          className="Nav_links"
-          to="/admin"
-        >
+        <Link className="Nav_links" to="/admin">
           <FontAwesomeIcon size="1x" icon="user-cog" className="Nav_linkIcons" />
         </Link>
       )
@@ -76,9 +69,8 @@ export default withAuth(class NavBar extends Component {
     return (
       <div className="App_header">
         <nav role="navigation">
-          <h3 id="Nav_logo">
-            MMD
-          </h3>
+          <h3 className="Nav_logo mobileView">MMD</h3>
+          <h3 className="Nav_logo fullView">Make My Day Events</h3>
           <div className="Nav_linksContainer">
             {adminLink}
             <Link className="Nav_links" to="/">

@@ -15,30 +15,6 @@ section {
     background-color: #E0E0E0;
 }
 
-section:first-of-type {
-    margin-top: 3.23em;
-    border-top: none;
-}
-
 section:last-of-type {
     padding: 0 0 6% 0;
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media screen and (min-width : 768px) and (max-width : 1024px) {
-   section:first-of-type {
-       margin-top: 3.75em;
-   }
-}
-
-/* Desktops and laptops ----------- */
-@media screen  and (min-width : 1224px) {
-   section:first-of-type {
-       margin-top: 4.39em;
-   }
-}
-
-/* Large screens ----------- */
-@media screen  and (min-width : 1824px) {
-/* Styles */
 }

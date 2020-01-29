@@ -9,10 +9,24 @@
 }
 
 .Admin_addPost {
-    margin-top: 5.3em;
-    background: none;
+	margin-top: 5.9em;
+	background: none;
 	color: inherit;
 	border: none;
 	cursor: pointer;
 	outline: inherit;
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media screen and (min-width : 768px) {
+	.Admin_addPost {
+		margin-top: 6.3em;
+	}
+}
+
+/* Desktops and laptops ----------- */
+@media screen  and (min-width : 1024px) {
+	.Admin_addPost {
+		margin-top: 7.5em;
+	}
 }

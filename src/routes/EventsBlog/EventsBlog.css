@@ -1,0 +1,18 @@
+.eventsBlog {
+  margin-top: 3.23em;
+  border-top: none;
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media screen and (min-width : 768px) {
+  .eventsBlog {
+    margin-top: 3.75em;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media screen  and (min-width : 1024px) {
+  .eventsBlog {
+    margin-top: 4em;
+  }
+}
