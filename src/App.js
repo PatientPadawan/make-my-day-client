@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
-import ScrollToTop from '../ScrollToTop/ScrollToTop';
-import LandingPage from '../../routes/LandingPage/LandingPage';
-import EventsBlog from '../../routes/EventsBlog/EventsBlog';
-import ContactPage from '../../routes/ContactPage/ContactPage';
-import AdminPage from '../../routes/AdminPage/AdminPage';
-import EditPage from '../../routes/EditPage/EditPage';
-import SignInPage from '../../routes/SignInPage/SignInPage';
-import Footer from '../Footer/Footer';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import LandingPage from './routes/LandingPage/LandingPage';
+import EventsBlog from './routes/EventsBlog/EventsBlog';
+import ContactPage from './routes/ContactPage/ContactPage';
+import AdminPage from './routes/AdminPage/AdminPage';
+import EditPage from './routes/EditPage/EditPage';
+import SignInPage from './routes/SignInPage/SignInPage';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 function onAuthRequired({ history }) {
