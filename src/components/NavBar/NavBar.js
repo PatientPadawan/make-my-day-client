@@ -86,8 +86,12 @@ export default withAuth(class NavBar extends Component {
     return (
       <div className="App_header">
         <nav role="navigation">
-          <h3 className="Nav_logo mobileView">MMD</h3>
-          <h3 className="Nav_logo fullView">Make My Day Events</h3>
+          <h3 className="Nav_logo mobileView">
+            <Link className="Nav_links" to="/">MMD</Link>
+          </h3>
+          <h3 className="Nav_logo fullView">
+            <Link className="Nav_links" to="/">Make My Day Events</Link>
+          </h3>
           <div className="Nav_linksContainer">
             {adminLink}
             <Link className="Nav_links" to="/">
