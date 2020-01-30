@@ -26,6 +26,7 @@ Admin Portal: https://make-my-day-events.now.sh/login
 ## Technologies
 
 * React 16
+* CSS3
 * Okta
 * TinyMCE
 * DOMpurify
