@@ -87,6 +87,7 @@ ContentComponent.propTypes = {
   children: propTypes.oneOfType([
     propTypes.string,
     propTypes.array,
+    propTypes.object,
   ]).isRequired,
   collapsed: propTypes.bool.isRequired,
 };

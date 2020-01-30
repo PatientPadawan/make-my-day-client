@@ -18,7 +18,7 @@ export default class EditPage extends Component {
     return (
       <>
         <NavBar />
-        <section>
+        <section className="editPage_content">
           <BlogEntry entries={postToEdit} />
           <PostEditor postToEdit={postToEdit} />
         </section>
