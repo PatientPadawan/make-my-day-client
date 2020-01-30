@@ -3,13 +3,14 @@
 }
 
 #Admin_addPostSection {	
+	margin-top: 3.23em;
 	background-color: #33242B;
 	color: #E0E0E0;
 	padding: 0%;
 }
 
 .Admin_addPost {
-	margin-top: 5.9em;
+	margin-top: 1em;
 	background: none;
 	color: inherit;
 	border: none;
@@ -17,16 +18,23 @@
 	outline: inherit;
 }
 
-/* iPads (portrait and landscape) ----------- */
+/* Tablets --------------- */
 @media screen and (min-width : 768px) {
-	.Admin_addPost {
-		margin-top: 6.3em;
+	#Admin_addPostSection {
+		margin-top: 3.75em;
 	}
 }
 
 /* Desktops and laptops ----------- */
 @media screen  and (min-width : 1024px) {
-	.Admin_addPost {
-		margin-top: 7.5em;
+	#Admin_addPostSection {
+		margin-top: 4em;
+	}
+}
+
+/* Large screens -------------- */
+@media screen and (min-width: 1440px) {
+	#Admin_addPostSection {
+		margin-top: 4.3em;
 	}
 }
