@@ -2,7 +2,7 @@
 
 This project was created for Make My Day Events LLC with the idea of allowing administrators to update the site with custom 
 
-blog content. This is achieved through a WYSIWYG editor that outputs an HTML string which is in turn converted to custom React 
+blog content. This is achieved through a WYSIWYG editor that outputs an HTML string which is in turn converted to React 
 
 elements. The site features OAuth 2.0 security courtesy of the Okta library and service. The primary purpose of the site is 
 
