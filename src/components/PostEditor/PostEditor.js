@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import propTypes from 'prop-types';
 import BlogContext from '../../contexts/BlogContext';
+import config from '../../config';
 import './PostEditor.css';
 
 export default class PostEditor extends Component {
@@ -27,10 +28,12 @@ export default class PostEditor extends Component {
 
     render() {
       const { content } = this.state;
+      const { TINY_API_KEY } = config;
       return (
         <>
           <Editor
             value={content}
+            apiKey={TINY_API_KEY}
             init={{
               height: 500,
               menubar: true,

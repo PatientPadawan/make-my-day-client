@@ -5,9 +5,8 @@
         { "handle": "filesystem" },
         { "src": "/.*", "dest": "/index.html" }
     ],
-    "build": {
-        "env": {
-            "REACT_APP_API_BASE_URL": "@react_app_api_base_url"
-        }
+    "env": {
+        "REACT_APP_API_BASE_URL": "@react_app_api_base_url",
+        "REACT_APP_CLIENT_BASE_URL": "@react_app_client_base_url"
     }
 }
