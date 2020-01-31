@@ -24,7 +24,6 @@ export default withAuth(class SignInPage extends Component {
       logout: propTypes.func,
       redirect: propTypes.func,
     }).isRequired,
-    baseUrl: propTypes.string.isRequired,
   }
 
   constructor(props) {
@@ -61,7 +60,6 @@ export default withAuth(class SignInPage extends Component {
 
   render() {
     const { authenticated } = this.state;
-    const { baseUrl } = this.props;
     if (authenticated === null) return null;
     return (
       <>
@@ -70,7 +68,6 @@ export default withAuth(class SignInPage extends Component {
           ? <Redirect to={{ pathname: '/' }} />
           : (
             <OktaSignInWidget
-              baseUrl={baseUrl}
               onSuccess={this.onSuccess}
               onError={onError}
             />

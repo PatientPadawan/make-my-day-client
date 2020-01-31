@@ -9,17 +9,18 @@ import AdminPage from './routes/AdminPage/AdminPage';
 import EditPage from './routes/EditPage/EditPage';
 import SignInPage from './routes/SignInPage/SignInPage';
 import Footer from './components/Footer/Footer';
+import config from './config';
 import './App.css';
 
-function onAuthRequired({ history }) {
+function customAuthHandler({ history }) {
   history.push('/login');
 }
 
+const { issuer, clientId, redirectUri } = config;
 const oktaConfig = {
-  issuer: `https://${process.env.REACT_APP_OKTA_DOMAIN}/oauth2/default`,
-  clientId: `${process.env.REACT_APP_OKTA_ID}`,
-  redirectUri: `${window.location.origin}/implicit/callback`,
-  onAuthRequired,
+  issuer,
+  clientId,
+  redirectUri,
   pkce: true,
 };
 
@@ -28,7 +29,7 @@ export default function App() {
     <div className="App">
       <main role="main" className="App_main">
         <Router>
-          <Security {...oktaConfig}>
+          <Security {...oktaConfig} onAuthRequired={customAuthHandler}>
             <ScrollToTop />
             <Route
               exact
@@ -53,7 +54,7 @@ export default function App() {
             />
             <Route
               path="/login"
-              render={() => <section><SignInPage baseUrl={`https://${process.env.REACT_APP_OKTA_DOMAIN}`} /></section>}
+              render={() => <section><SignInPage /></section>}
             />
             <Route
               path="/implicit/callback"
