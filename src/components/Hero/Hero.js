@@ -1,67 +1,77 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
+import Photo1 from '../../images/gallery/whiteBalloons.jpg';
+import Photo2 from '../../images/gallery/topDJ.jpg';
+import Photo3 from '../../images/gallery/sparklersWedding.jpg';
+import Photo4 from '../../images/gallery/festivalConfetti.jpg';
+import Photo5 from '../../images/gallery/flowByDay.jpg';
+import Photo6 from '../../images/gallery/weddingToast.jpg';
+import Photo7 from '../../images/gallery/redHatParty.jpg';
+import Photo8 from '../../images/gallery/festivalConfetti2.jpg';
+import Photo9 from '../../images/gallery/smallDance.jpg';
+import Photo10 from '../../images/gallery/pinkDJ.jpg';
 import './Hero.css';
 
 export default function Hero() {
   const images = [
     {
-      original: 'https://i.imgur.com/jabsphK.jpg',
+      original: Photo1,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/jabsphKt.jpg',
+      thumbnail: Photo1,
       thumbnailAlt: '',
     },
     {
-      original: 'https://i.imgur.com/jaBkAal.jpg',
+      original: Photo2,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/jaBkAalt.jpg',
+      thumbnail: Photo2,
       thumbnailAlt: '',
     },
     {
-      original: 'https://i.imgur.com/D6cIbb5.jpg',
+      original: Photo3,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/D6cIbb5t.jpg',
+      thumbnail: Photo3,
       thumbnailAlt: '',
     },
     {
-      original: 'https://i.imgur.com/TJmPvG2.jpg',
+      original: Photo4,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/TJmPvG2t.jpg',
+      thumbnail: Photo4,
       thumbnailAlt: '',
     },
     {
-      original: 'https://i.imgur.com/PkrhU9D.jpg',
+      original: Photo5,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/PkrhU9Dt.jpg',
+      thumbnail: Photo5,
       thumbnailAlt: '',
     },
     {
-      original: 'https://i.imgur.com/wm9V76i.jpg',
+      original: Photo6,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/wm9V76it.jpg',
+      thumbnail: Photo6,
       thumbnailAlt: '',
     },
     {
-      original: 'https://i.imgur.com/f92GeES.jpg',
+      original: Photo7,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/f92GeESt.jpg',
+      thumbnail: Photo7,
       thumbnailAlt: '',
     },
     {
-      original: 'https://i.imgur.com/VZPEHgu.jpg',
+      original: Photo8,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/VZPEHgut.jpg',
+      thumbnail: Photo8,
       thumbnailAlt: '',
     },
     {
-      original: 'https://i.imgur.com/jh5lwiN.jpg',
+      original: Photo9,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/jh5lwiNt.jpg',
+      thumbnail: Photo9,
       thumbnailAlt: '',
     },
     {
-      original: 'https://i.imgur.com/1CC7oX6.jpg',
+      original: Photo10,
       originalAlt: '',
-      thumbnail: 'https://i.imgur.com/1CC7oX6t.jpg',
+      thumbnail: Photo10,
       thumbnailAlt: '',
     },
   ];
