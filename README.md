@@ -16,6 +16,10 @@ Main Site: https://make-my-day-events.now.sh/
 
 Admin Portal: https://make-my-day-events.now.sh/login
 
+A test account has been created for the admin portal and is available upon request. 
+
+Email 1patientpadawan@gmail.com for more information.
+
 ## Screenshots
 
 ![Screenshot1](/src/images/clientTabletView-landing.png)
