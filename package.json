@@ -13,7 +13,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^8.0.3",
     "@tinymce/tinymce-react": "^3.3.2",
-    "dompurify": "^2.0.7",
+    "dompurify": "^2.0.17",
     "html-react-parser": "^0.10.0",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
